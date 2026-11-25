@@ -1,0 +1,55 @@
+/* Shared presentation only: appearance never reads or changes musical projects. */
+.nadi-experience {
+  --glass-text:#152348; --glass-muted:#546785; --glass-surface:rgba(255,255,255,.56); --glass-solid:#edf5fc;
+  --glass-line:rgba(255,255,255,.86); --glass-accent:#087e9c; --glass-shadow:0 14px 36px rgba(36,80,135,.13),inset 0 1px 0 rgba(255,255,255,.8);
+  --glass-bg:radial-gradient(ellipse at 12% 10%,#a0eef5 0,transparent 45%),radial-gradient(ellipse at 85% 12%,#ffd9de 0,transparent 45%),radial-gradient(ellipse at 72% 94%,#c9bafb 0,transparent 47%),linear-gradient(130deg,#d2f7ff,#e4e9fb 57%,#fae3e0);
+  --ink-0:var(--glass-solid); --ink-1:var(--glass-surface); --ink-2:var(--glass-solid); --ink-3:var(--glass-surface); --ink-4:#cbdde9;
+  --text:var(--glass-text); --text-soft:var(--glass-muted); --muted:var(--glass-muted); --line:color-mix(in srgb,var(--glass-accent) 20%,transparent); --line-strong:var(--glass-accent);
+  --teal:var(--glass-accent); --teal-strong:var(--glass-accent); --gold:#886029; --coral:#a34359; --panel-radius:20px;
+  --font-display:'Aptos','Segoe UI',system-ui,sans-serif; --font-body:'Aptos','Segoe UI',system-ui,sans-serif;
+  height:100dvh; width:100%; overflow:hidden; background:var(--glass-bg); color:var(--glass-text); color-scheme:light; font-family:var(--font-body);
+}
+.nadi-experience[data-theme=eclipse] {
+  --glass-text:#f2f2ff; --glass-muted:#c2c5e7; --glass-surface:rgba(32,37,95,.57); --glass-solid:#303367; --glass-line:rgba(198,197,255,.3); --glass-accent:#a2d3ff;
+  --glass-shadow:0 16px 40px rgba(8,10,54,.28),inset 0 1px 0 rgba(219,220,255,.19);
+  --glass-bg:radial-gradient(ellipse at 12% 17%,#185894 0,transparent 44%),radial-gradient(ellipse at 78% 10%,#684ca8 0,transparent 46%),radial-gradient(ellipse at 80% 90%,#703c79 0,transparent 43%),linear-gradient(135deg,#172858,#2b236c 55%,#492b79);
+  --ink-4:#414877; --gold:#eed19f; --coral:#ffadc1; color-scheme:dark;
+}
+.nadi-experience[data-theme=dark] {
+  --glass-text:#f2f3f3; --glass-muted:#bcc5c6; --glass-surface:rgba(43,46,49,.65); --glass-solid:#303638; --glass-line:rgba(255,255,255,.2); --glass-accent:#a1dccb;
+  --glass-shadow:0 16px 38px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.13);
+  --glass-bg:radial-gradient(ellipse at 10% 12%,#344645 0,transparent 43%),radial-gradient(ellipse at 88% 19%,#45343f 0,transparent 39%),linear-gradient(125deg,#191c20,#282a2e 62%,#1b2023);
+  --ink-4:#424a4d; --gold:#e4c89e; --coral:#f4a5a5; color-scheme:dark;
+}
+.nadi-appearance-bar {height:48px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 22px; color:var(--glass-text); font-size:12px;}
+.nadi-identity {display:flex; align-items:center; gap:10px; min-width:0;}
+.nadi-identity strong {font-weight:650; letter-spacing:.01em;}
+.nadi-orbit {display:grid; place-items:center; width:27px; height:27px; background:var(--glass-surface); border:1px solid var(--glass-line); border-radius:9px; color:var(--glass-accent); font-size:20px; box-shadow:var(--glass-shadow);}
+.nadi-location {border-left:1px solid var(--glass-line); padding-left:12px; margin-left:4px; color:var(--glass-muted);}
+.nadi-appearance {display:flex; align-items:center; gap:10px; color:var(--glass-muted); font-weight:600;}
+.nadi-appearance select {border:1px solid var(--glass-line); border-radius:10px; padding:5px 10px; color:var(--glass-text); background:var(--glass-surface); font:inherit; min-height:32px;}
+.nadi-experience option {background:var(--glass-solid); color:var(--glass-text);}
+.nadi-experience :focus-visible {outline:3px solid var(--glass-accent); outline-offset:3px;}
+.nadi-experience-content {height:calc(100dvh - 48px); overflow:auto;}
+.nadi-experience .app-shell {background:transparent; width:100%; min-height:100%; height:auto; color:var(--glass-text);}
+.nadi-experience .app-shell :is(h1,h2,h3,.eyebrow,.brand,button) {font-family:var(--font-body); text-shadow:none;}
+.nadi-experience .app-shell h1 {text-transform:none; letter-spacing:-.04em; line-height:1.08; font-weight:750;}
+.nadi-experience .app-shell h2 {letter-spacing:-.02em;}
+.nadi-experience .app-shell :is(.shell-frame,.panel,.setup-card,.path-card,.project-card,.mira-panel,.studio-stage) {border:1px solid var(--glass-line); border-radius:20px; background:var(--glass-surface); box-shadow:var(--glass-shadow);}
+.nadi-experience .app-shell :is(.shell-frame,.panel)::before,.nadi-experience .app-shell :is(.shell-frame,.panel)::after {display:none;}
+.nadi-experience .app-shell :is(.nav-header,.studio-header) {margin:0 12px; border-radius:18px; background:var(--glass-surface); border-color:var(--glass-line);}
+.nadi-experience .app-shell .sidebar {margin:12px 0 12px 12px; padding:18px 12px;}
+.nadi-experience .app-shell .navigation-main {background:transparent; border:0; border-radius:20px;}
+.nadi-experience .app-shell.navigation-shell {height:calc(100dvh - 78px); min-height:600px; gap:14px; padding:4px 12px 12px;}
+.nadi-experience .app-shell :is(.sidebar__save,.midi-chip,.phase-rail,.info-strip) {border-radius:12px; border-color:var(--line); background:var(--glass-surface); color:var(--glass-muted);}
+.nadi-experience .app-shell .sidebar__item {text-transform:none; letter-spacing:0; font-size:.88rem;}
+.nadi-experience .app-shell .sidebar__item {border-radius:12px; color:var(--glass-muted);}
+.nadi-experience .app-shell .sidebar__item:is(.is-active,:hover) {background:var(--glass-surface); border-color:var(--glass-line); color:var(--glass-text); box-shadow:inset 0 1px var(--glass-line);}
+.nadi-experience .app-shell :is(.button,.icon-button,.filter-chip,.status-pill) {border-radius:11px; box-shadow:none; text-shadow:none;}
+.nadi-experience .app-shell .button {background:var(--glass-surface); border-color:var(--glass-line); color:var(--glass-text);}
+.nadi-experience .app-shell .button--primary {background:var(--glass-accent); color:var(--glass-solid); border-color:transparent; font-weight:700;}
+.nadi-experience .app-shell :is(input,select,textarea) {border-radius:9px; background:var(--glass-solid); color:var(--glass-text); border-color:var(--line);}
+.nadi-experience .app-shell :is(.eyebrow,.teal) {color:var(--glass-accent);}
+.nadi-experience .persistence-toolbar {background:var(--glass-surface); color:var(--glass-muted); border-color:var(--glass-line);}
+@media(max-width:650px) {.nadi-appearance-bar{padding:0 12px}.nadi-location{display:none}.nadi-identity strong{font-size:11px}.nadi-appearance{font-size:11px;gap:5px}}
+@media(prefers-reduced-transparency:reduce) {.nadi-experience .app-shell :is(.shell-frame,.panel,.setup-card,.path-card,.project-card,.mira-panel,.studio-stage){background:var(--glass-solid);backdrop-filter:none}}

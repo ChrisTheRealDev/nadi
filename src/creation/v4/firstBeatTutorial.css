@@ -1,0 +1,41 @@
+.nadi-experience .first-beat-tutorial {
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  margin:12px; padding:18px 22px; min-width:0; box-sizing:border-box;
+  color:var(--brand-text); font-family:var(--brand-font);
+  border:1px solid var(--brand-glass-edge); border-radius:28px;
+  background:var(--brand-glass-sheen),var(--brand-glass-fill);
+  box-shadow:var(--brand-glass-shadow);
+  backdrop-filter:blur(25px) saturate(150%); -webkit-backdrop-filter:blur(25px) saturate(150%);
+}
+.first-beat-tutorial>div {min-width:0}
+.first-beat-tutorial strong {font-size:16px;line-height:1.4}
+.nadi-experience .first-beat-tutorial p {margin:7px 0;max-width:850px;line-height:1.5;color:var(--brand-text)}
+.nadi-experience .first-beat-tutorial small {font-size:13px;line-height:1.5;color:var(--brand-muted);opacity:1}
+.first-beat-actions {display:flex;flex-wrap:wrap;gap:8px;flex-shrink:0}
+.first-beat-restart {display:flex;justify-content:flex-end;margin:8px 14px}
+.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button {
+  appearance:none;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;max-width:100%;padding:10px 16px;border-radius:14px;
+  border:1px solid var(--brand-line);background:var(--brand-control-idle);
+  color:var(--brand-text);font:700 14px/1.3 var(--brand-font);text-align:center;
+  box-shadow:inset 0 1px #ffffff28;cursor:pointer;transform:none;
+  transition:background-color .15s,border-color .15s;
+}
+.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button:hover:not(:disabled) {border-color:var(--brand-accent);box-shadow:inset 0 1px #ffffff40;transform:none}
+.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button:active:not(:disabled) {background:var(--brand-control-active);color:var(--brand-control-active-text)}
+.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button:focus-visible {outline:2px solid var(--brand-accent);outline-offset:3px}
+.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button:disabled {opacity:.55;cursor:default}
+@media(max-width:800px){.nadi-experience .first-beat-tutorial{flex-direction:column;align-items:flex-start;gap:14px}.first-beat-actions{flex-shrink:1}}
+@media(prefers-reduced-transparency:reduce){.nadi-experience .first-beat-tutorial{background:var(--brand-solid);backdrop-filter:none;-webkit-backdrop-filter:none}}
+@supports not (backdrop-filter:blur(1px)){.nadi-experience .first-beat-tutorial{background:var(--brand-solid)}}
+@media(prefers-reduced-motion:reduce){.nadi-experience :is(.first-beat-tutorial,.first-beat-restart) button{transition:none}}
+
+.nadi-experience .first-beat-tutorial h2 {font-size:19px;line-height:1.35;margin:6px 0 10px;color:var(--brand-text)}
+.first-beat-tutorial .tutorial-copy {flex:1 1 560px}
+.first-beat-tutorial ul {padding-inline-start:20px;margin:0 0 10px;line-height:1.5}
+.first-beat-tutorial li+li {margin-top:6px}
+.first-beat-tutorial[data-tour] .first-beat-actions {flex:0 1 260px;align-content:center}
+.nadi-experience:has([data-tour="transport"]) .sw-transport,
+.nadi-experience:has([data-tour="panels"]) .sw-selector,
+.nadi-experience:has([data-tour="account"]) .nadi-account-strip {outline:2px solid var(--brand-accent);outline-offset:3px}
+@media(max-width:800px){.first-beat-tutorial .tutorial-copy,.first-beat-tutorial[data-tour] .first-beat-actions{flex:auto}}

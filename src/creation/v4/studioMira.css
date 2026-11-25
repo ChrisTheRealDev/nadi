@@ -1,0 +1,37 @@
+.creation-shell .studio-mira { min-width: 0; overflow: auto; }
+.studio-mira form { display: grid; gap: 8px; }
+.studio-mira textarea { width: 100%; box-sizing: border-box; min-height: 70px; resize: vertical; }
+.studio-mira .mira-avatar { image-rendering: pixelated; }
+.studio-mira-topics { margin: 12px 0; }
+.studio-mira-topics > summary { cursor: pointer; color: #a5cbb9; }
+.studio-mira-topics > div { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 8px; }
+.studio-mira-topics button { text-align: left; font-size: 12px; }
+.studio-mira-answer { border-top: 1px solid #33413b; padding-top: 8px; }
+.studio-mira-action { padding: 10px; border-left: 2px solid #65b793; background: #1c2924; color: #e3eee7; }
+.studio-mira-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 8px 0; }
+.studio-mira .studio-mira-actions button { width: auto; margin: 0; min-height: 32px; padding: 6px; }
+.studio-mira p { margin: 6px 0; }
+.studio-mira small { display: block; line-height: 1.5; color: #a0b1a8; }
+.studio-mira-connection { border: 1px solid #3a5045; border-radius: 6px; padding: 8px; margin-bottom: 8px; font-size: 12px; line-height: 1.5; }
+.studio-mira-connection button { display: block; margin-top: 6px; }
+.studio-mira-setup, .studio-mira-history, .studio-mira-guide { margin: 10px 0; }
+.studio-mira summary { cursor: pointer; }
+.studio-mira-history > div { border-left: 2px solid #42574c; padding-left: 8px; }
+.studio-mira-live-reply { white-space: pre-wrap; line-height: 1.65; }
+.studio-mira p, .studio-mira small { overflow-wrap: anywhere; }
+.creation-shell .studio-mira { display: flex; flex-direction: column; gap: 8px; }
+.studio-mira > * { flex-shrink: 0; }
+.studio-mira > .mira-source { margin: 0; }
+.studio-mira-user { background: #24362e; border-radius: 6px; padding: 8px 10px; }
+.studio-mira .studio-mira-failure { border-left: 2px solid #d7b46d; padding-left: 8px; }
+.studio-mira-answer { max-height: 38vh; overflow: auto; overscroll-behavior: contain; }
+.studio-mira-attachment, .studio-mira-song { border: 1px solid #41594c; border-radius: 6px; padding: 8px; }
+.studio-mira-attachment { background: #1d2e25; }
+.studio-mira-song input { width: 100%; box-sizing: border-box; margin: 6px 0; }
+.studio-mira-song h3 { font-size: 14px; margin: 10px 0 4px; }
+.studio-mira-composer textarea { max-height: 180px; }
+.studio-mira-goal input { width: 100%; box-sizing: border-box; margin: 6px 0; }
+.studio-mira-example { border: 1px solid #41594c; border-radius: 6px; padding: 8px; background: #1d2e25; }
+.studio-mira-example ol { padding-left: 20px; font-size: 12px; line-height: 1.6; }
+.studio-mira-starters { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.studio-mira-starters button { text-align: left; }

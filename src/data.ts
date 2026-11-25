@@ -1,0 +1,141 @@
+import type { CourseSession, LearningPath } from './types'
+
+export const paths: LearningPath[] = [
+  {
+    id: 'emotive',
+    title: 'Emotive Piano',
+    eyebrow: 'Available now',
+    mood: 'Intimate · reflective · spacious',
+    promise: '8 sessions · your first complete track',
+    available: true,
+    accent: 'teal',
+  },
+  {
+    id: 'guitar',
+    title: 'Guitar Story',
+    eyebrow: 'Preview · course later',
+    mood: 'Warm · organic · unhurried',
+    promise: 'Hear the sound before you decide',
+    available: false,
+    accent: 'amber',
+  },
+  {
+    id: 'cinematic',
+    title: 'Cinematic Pulse',
+    eyebrow: 'Preview · course later',
+    mood: 'Bold · tense · expansive',
+    promise: 'Hear the sound before you decide',
+    available: false,
+    accent: 'coral',
+  },
+  {
+    id: 'electronic',
+    title: 'Electronic Mystery',
+    eyebrow: 'Preview · course later',
+    mood: 'Airy · curious · luminous',
+    promise: 'Hear the sound before you decide',
+    available: false,
+    accent: 'violet',
+  },
+]
+
+export const courseSessions: CourseSession[] = [
+  {
+    number: 1,
+    title: 'First Sound',
+    short: 'Connect your keys and make the first sound.',
+    duration: '25–35 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 2,
+    title: 'Beat, Bar & Grid',
+    short: 'Learn that four beats make one bar—and see where they live in a DAW.',
+    duration: '30–40 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 3,
+    title: 'Harmony A',
+    short: 'Build your first minor harmony.',
+    duration: '35–45 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 4,
+    title: 'Harmony B',
+    short: 'Extend your harmony and add movement.',
+    duration: '35–45 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 5,
+    title: 'Shape the Chords',
+    short: 'Place, resize, and align the harmony.',
+    duration: '35–45 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 6,
+    title: 'Write a Phrase',
+    short: 'Write a melody that sounds like yours.',
+    duration: '45–55 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 7,
+    title: 'Repeat with Meaning',
+    short: 'Repeat your idea, then make it change.',
+    duration: '35–45 min',
+    status: 'current',
+    playable: true,
+  },
+  {
+    number: 8,
+    title: 'Give It Expression',
+    short: 'Shape the touch, balance, and space.',
+    duration: '40–55 min',
+    status: 'current',
+    playable: true,
+  },
+]
+
+export const computerKeyMap: Record<string, number> = {
+  a: 57,
+  w: 58,
+  s: 59,
+  d: 60,
+  r: 61,
+  f: 62,
+  t: 63,
+  g: 64,
+  h: 65,
+  u: 66,
+  j: 67,
+  i: 68,
+  k: 69,
+}
+
+export const pianoRollRows = [64, 62, 60, 59, 57] as const
+
+export const noteNames: Record<number, string> = {
+  57: 'A',
+  58: 'A♯',
+  59: 'B',
+  60: 'C',
+  61: 'C♯',
+  62: 'D',
+  63: 'D♯',
+  64: 'E',
+  65: 'F',
+  66: 'F♯',
+  67: 'G',
+  68: 'G♯',
+  69: 'A',
+}

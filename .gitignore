@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.nadi-server/
+.vite-cache/
+.mira-private/
+audit-fixtures/
+coverage/
+*.log
+.env*
+!.env.example
+demo-connection.json
+*.nadi
+!public/templates/Sirens-study.nadi

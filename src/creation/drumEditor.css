@@ -1,0 +1,174 @@
+.creation-shell .drum-editor--timeline {
+  --drum-label-width: 84px;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  background: #1b222c;
+}
+
+.creation-shell .drum-toolbar {
+  display: flex;
+  min-height: 38px;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #354051;
+  background: #222a35;
+}
+
+.creation-shell .drum-toolbar strong {
+  margin-right: 4px;
+  color: #d8e1ee;
+  font-size: 11px;
+}
+
+.creation-shell .drum-toolbar button {
+  min-height: 26px;
+  padding: 4px 9px;
+  border: 1px solid #46566c;
+  border-radius: 3px;
+  color: #bdcce0;
+  background: #293544;
+  font-size: 10px;
+}
+
+.creation-shell .drum-toolbar button[aria-pressed='true'] {
+  border-color: #c9a96e;
+  color: #f0d7a7;
+  background: #4a402e;
+}
+
+.creation-shell .drum-toolbar button:disabled { opacity: .48; cursor: not-allowed; }
+.creation-shell .drum-microhint { min-width: 170px; margin-left: auto; color: #8f9eb2; font-size: 9px; line-height: 1.35; text-align: right; }
+
+.creation-shell .drum-scroll {
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.creation-shell .drum-surface {
+  position: relative;
+  width: 100%;
+  min-width: var(--surface-min-width);
+  padding: 8px 10px 14px;
+}
+
+.creation-shell .step-numbers.drum-time-ruler,
+.creation-shell .drum-editor--timeline .drum-row {
+  display: grid;
+  grid-template-columns: var(--drum-label-width) minmax(0, 1fr);
+  gap: 0;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.creation-shell .step-numbers.drum-time-ruler {
+  position: sticky;
+  z-index: 8;
+  top: 0;
+  height: 38px;
+  color: #91a0b5;
+  background: #1b222c;
+}
+
+.creation-shell .drum-row-label {
+  position: sticky;
+  z-index: 7;
+  left: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 2px;
+  background: #1b222c;
+  box-shadow: 1px 0 #394455;
+}
+
+.creation-shell .drum-ruler-bars { display: grid; grid-template-columns: repeat(var(--visible-bars), minmax(240px, 1fr)); }
+.creation-shell .drum-ruler-bar { position: relative; display: grid; grid-template-columns: repeat(4, minmax(60px, 1fr)); padding-top: 15px; border-left: 1px solid #6c788a; }
+.creation-shell .drum-ruler-bar em { position: absolute; top: 0; left: 5px; color: #bcc8d8; font: normal 600 9px 'Segoe UI', system-ui, sans-serif; }
+.creation-shell .drum-ruler-bar b { border-left: 1px solid #424e60; font: 9px ui-monospace, Consolas, monospace; text-align: center; }
+
+.creation-shell .drum-editor--timeline .drum-row {
+  margin: 7px 0;
+  min-height: var(--row-height);
+  --hit-color: #dbb071;
+}
+
+.creation-shell .drum-editor--timeline .drum-row:has(.drum-hit[aria-label^='Snare'], .drum-step[aria-label^='Snare']) { --hit-color: #ba9bd9; }
+.creation-shell .drum-editor--timeline .drum-row:has(.drum-hit[aria-label^='Hi-hat'], .drum-step[aria-label^='Hi-hat']) { --hit-color: #79bfc8; }
+.creation-shell .drum-editor--timeline .drum-row > strong { min-height: var(--row-height); color: var(--hit-color); font-size: 11px; }
+
+.creation-shell .drum-lane {
+  position: relative;
+  min-height: var(--row-height);
+  border-block: 1px solid #354153;
+  background-color: #232c38;
+  background-image:
+    linear-gradient(to right, #7a8798 1px, transparent 1px),
+    linear-gradient(to right, #455165 1px, transparent 1px),
+    linear-gradient(to right, #333e4e 1px, transparent 1px);
+  background-size: var(--bar-width) 100%, var(--beat-width) 100%, var(--step-width) 100%;
+}
+
+.creation-shell .drum-editor--timeline .drum-row button { min-width: 0; min-height: 0; max-height: none; aspect-ratio: auto; }
+.creation-shell .drum-step {
+  position: absolute;
+  inset-block: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.creation-shell .drum-step:nth-of-type(8n + 5),
+.creation-shell .drum-step:nth-of-type(8n + 6),
+.creation-shell .drum-step:nth-of-type(8n + 7),
+.creation-shell .drum-step:nth-of-type(8n + 8) { background: #7561880a; }
+.creation-shell .drum-step:nth-of-type(4n + 1) { border-left: 0; }
+.creation-shell .drum-step:hover { background: color-mix(in srgb, var(--hit-color) 14%, transparent); }
+.creation-shell .drum-step:focus-visible { z-index: 3; outline: 2px solid #d8e4f5; outline-offset: -3px; }
+
+.creation-shell .drum-hit {
+  position: absolute;
+  z-index: 5;
+  height: 14px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--hit-color) 80%, white);
+  border-radius: 3px;
+  background: var(--hit-color);
+  box-shadow: inset 0 -3px #0003;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.creation-shell .drum-hit--off-grid { width: 12px; transform: translateX(-50%); border-radius: 50%; }
+.creation-shell .drum-hit:hover { filter: brightness(1.15); }
+.creation-shell .tool-erase .drum-hit { cursor: crosshair; }
+.creation-shell .drum-hit:focus-visible { outline: 2px solid #f2f6fc; outline-offset: 2px; }
+.creation-shell .drum-hit:disabled { cursor: not-allowed; opacity: .52; }
+
+.creation-shell .drum-playhead {
+  position: absolute;
+  z-index: 9;
+  top: 8px;
+  bottom: 10px;
+  width: 2px;
+  pointer-events: none;
+  background: #e7c175;
+  box-shadow: 0 0 6px #e7c17599;
+}
+
+@media (max-width: 700px) {
+  .creation-shell .drum-toolbar { flex-wrap: wrap; }
+  .creation-shell .drum-microhint { width: 100%; margin-left: 0; text-align: left; }
+}

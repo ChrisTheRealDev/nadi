@@ -1,0 +1,38 @@
+/* Familiar DAW panels backed by existing functionality. */
+.creation-shell .workspace-switches { gap:6px; }
+.creation-shell .window-switches { display:flex; gap:3px; padding-right:8px; margin-right:3px; border-right:1px solid #46574e; }
+.creation-shell .window-switches button { gap:5px; padding:4px 7px; font-size:11px; background:#25342c; border-color:#41584a; color:#bccdc0; }
+.creation-shell .window-switches .studio-icon { width:15px; height:15px; }
+.creation-shell .window-switches button[aria-pressed=true], .creation-shell .window-switches button[aria-expanded=true] { color:#c8edd5; background:#354e3e; border-color:#659276; box-shadow:inset 0 -2px #65c49a; }
+.creation-shell .studio-idea-pad { display:flex; flex-direction:column; }
+.creation-shell .studio-idea-pad[hidden] { display:none; }
+.creation-shell .browser-tabs { display:flex; flex:none; min-height:36px; border-bottom:1px solid #415448; background:#27382e; }
+.creation-shell .browser-tabs button { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:7px 9px; border:0; border-right:1px solid #415448; background:transparent; color:#aabcad; font-size:12px; }
+.creation-shell .browser-tabs button[aria-selected=true] { color:#dbebdf; background:#304238; box-shadow:inset 0 -2px #74ac87; }
+.creation-shell .browser-tabs .studio-icon { width:15px; height:15px; }
+.creation-shell .browser-content { flex:1; min-height:0; overflow:hidden; }
+.creation-shell .browser-content[hidden] { display:none; }
+.creation-shell .sound-browser { display:block; padding:16px 12px; overflow:auto; }
+.creation-shell .sound-browser[hidden] { display:none; }
+.creation-shell .sound-browser h2 { margin:0 0 8px; color:#dde8e0; font-size:15px; }
+.creation-shell .sound-browser p { margin:0 0 20px; color:#a7b7ac; font-size:12px; line-height:1.6; }
+.creation-shell .sound-browser h3 { margin:18px 0 8px; color:#95a99b; font-size:10px; text-transform:uppercase; letter-spacing:.09em; }
+.creation-shell .sound-choice { display:flex; align-items:center; gap:10px; width:100%; margin-bottom:6px; padding:11px 9px; border:1px solid #3f4d43; border-left:3px solid var(--track-color); border-radius:3px; text-align:left; color:#d5e2d9; background:#28322c; }
+.creation-shell .sound-choice:hover { background:#33493b; border-color:#72927a; }
+.creation-shell .sound-choice > .studio-icon { color:var(--track-color); }
+.creation-shell .sound-choice > span:nth-last-child(1) { margin-left:auto; }
+.creation-shell .sound-choice small { display:block; margin-top:4px; color:#9bab9f; font-size:10px; }
+.creation-shell .sound-browser-note { display:block; margin-top:24px; padding-top:12px; border-top:1px solid #3b4a40; color:#96a69b; line-height:1.6; font-size:11px; }
+.creation-shell .compact-mixer--expanded { position:fixed; z-index:75; left:50%; bottom:46px; transform:translateX(-50%); display:grid; grid-template-columns:repeat(var(--tracks),minmax(90px,1fr)); grid-template-rows:auto minmax(110px,1fr) auto; gap:12px; align-items:stretch; width:min(640px,calc(100% - 32px)); height:266px; padding:12px; border:1px solid #739782; border-radius:6px; background:linear-gradient(145deg,#2b3b31,#1e2923); box-shadow:0 15px 70px #000a,inset 0 1px #94c6a533; overflow:auto; }
+.creation-shell .compact-mixer--expanded .mixer-window-heading { grid-column:1 / -1; display:flex; align-items:center; gap:8px; padding-bottom:9px; border-bottom:1px solid #435b4b; }
+.creation-shell .mixer-window-heading h2 { margin:0; font-size:14px; color:#e0eae2; }
+.creation-shell .mixer-window-heading > span { color:#a1b5a7; font-size:11px; }
+.creation-shell .mixer-window-heading > button { margin-left:auto; padding:5px 8px; border:1px solid #5b7965; border-radius:3px; background:#304438; color:#c5dece; font-size:11px; }
+.creation-shell .compact-mixer--expanded .mixer-strip { min-width:0; max-width:none; width:auto; display:flex; flex-direction:column; gap:8px; padding:8px; background:#18251e; border:1px solid #394e40; border-top:2px solid var(--track-color); border-radius:3px; }
+.creation-shell .compact-mixer--expanded .mixer-strip label { min-height:0; flex:1; gap:7px; }
+.creation-shell .compact-mixer--expanded .mixer-strip input { writing-mode:vertical-lr; direction:rtl; height:72px; width:13px; }
+.creation-shell .compact-mixer--expanded .mixer-strip button { width:64px; min-height:25px; }
+.creation-shell .compact-mixer--expanded .track-capabilities { display:block; grid-column:1 / -1; margin:0; white-space:normal; color:#a1b5a7; font-size:10px; }
+@media (max-width:1250px) and (min-width:951px) { .creation-shell .window-switches button { font-size:10px; padding-inline:5px; }.creation-shell .window-switches .studio-icon { display:none; }.creation-shell .toolbar-divider { margin-inline:2px; }.creation-shell .studio-toolbar { gap:5px; padding-inline:10px; }.creation-shell .workspace-switches { gap:4px; }.creation-shell .workspace-switches > button { padding-inline:6px; } }
+@media (max-width:950px) { .creation-shell .window-switches { flex-wrap:wrap; }.creation-shell .workspace-switches { flex-wrap:wrap; }.creation-shell .studio-idea-pad { min-height:430px; height:auto; }.creation-shell .browser-content { min-height:370px; }.creation-shell .browser-content[hidden] { min-height:0; } }
+@media (max-width:650px) { .creation-shell .window-switches { width:100%; border:0; margin:0 0 5px; padding:0; }.creation-shell .window-switches button { flex:1; }.creation-shell .workspace-switches { width:100%; }.creation-shell .window-switches .studio-icon { display:none; }.creation-shell .compact-mixer--expanded { height:280px; bottom:36px; }.creation-shell .compact-mixer--expanded .mixer-strip { padding:5px; }.creation-shell .mixer-window-heading > span { display:none; } }

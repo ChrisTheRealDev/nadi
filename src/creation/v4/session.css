@@ -1,0 +1,48 @@
+.studio-standard .creation-shell,.studio-focused .creation-shell { grid-template-rows:48px auto minmax(0,1fr) 30px; }
+.creation-shell .studio-toolbar { flex-wrap:wrap; row-gap:3px; }
+.studio-session-controls { width:100%; display:flex; align-items:center; gap:9px; min-height:30px; color:#b9cfc4; font-size:11px; flex-wrap:wrap; }
+.studio-session-controls label { display:flex; align-items:center; gap:5px; }
+.studio-session-controls button,.studio-session-controls select,.studio-session-controls input:not([type=checkbox]) { border:1px solid #455a4f; border-radius:4px; background:#1c2923; color:#d7e8dc; padding:4px 7px; min-height:27px; }
+.studio-session-controls select { max-width:180px; }
+.studio-session-controls details { position:relative; }
+.studio-session-controls summary { cursor:pointer; padding:5px; }
+.studio-range { position:absolute; z-index:35; top:100%; right:0; width:340px; max-width:85vw; display:flex; gap:8px; flex-wrap:wrap; padding:14px; background:#1b2621; border:1px solid #536e60; box-shadow:0 12px 35px #0009; }
+.studio-range input:not([type=checkbox]) { width:65px; }
+.studio-range p { line-height:1.5; margin:0; }
+.studio-focused .creation-shell .workspace-arranged { padding:6px; gap:4px; }
+.studio-focused .creation-shell .status-stack { max-height:30px; overflow:auto; }
+.studio-focused .creation-shell .editor { min-height:0; }
+.studio-focused .creation-shell .piano-editor { min-height:0; overflow:auto; }
+.studio-focused .creation-shell .piano-editor > .composing-editor { min-height:0; height:100%; }
+.studio-focused .creation-shell .composing-editor .piano-roll-viewport { min-height:300px; max-height:none; flex:1; }
+.studio-focused .creation-shell .editor-tabs { display:none; }
+.studio-focused .creation-shell .bar-actions { padding:3px 7px; }
+.studio-focused .creation-shell .v4-track-controls,.studio-focused .creation-shell .v4-editor-context { padding-top:3px; padding-bottom:3px; }
+.studio-focused .creation-shell .note-inspector { flex:none; }
+.studio-focused .creation-shell .window-switches { display:none; }
+.studio-focused .creation-shell .editor-hint { display:none; }
+.studio-focused .creation-shell .roll-help { position:absolute; right:6px; bottom:2px; z-index:8; background:#19251f; }
+.studio-focused .creation-shell .composing-editor { position:relative; }
+.studio-focused .creation-shell .note-clipboard-tools { min-height:26px; }
+@media (min-width:1000px) {
+  .studio-focused .creation-shell .piano-editor > .composing-editor { display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-rows:auto auto minmax(300px,1fr) auto; gap:4px; }
+  .studio-focused .creation-shell .composing-editor>.note-tools { grid-row:1; grid-column:1; flex-wrap:nowrap; min-width:0; }
+  .studio-focused .creation-shell .composing-editor>.note-batch-tools { grid-column:2; justify-content:flex-end; }
+  .studio-focused .creation-shell .composing-editor>.roll-ruler-viewport { grid-column:1/-1; grid-row:2; }
+  .studio-focused .creation-shell .composing-editor>.piano-roll-viewport { grid-column:1/-1; grid-row:3; }
+  .studio-focused .creation-shell .composing-editor>.note-inspector { grid-column:1/-1; grid-row:4; padding-top:5px; padding-bottom:5px; }
+  .studio-focused .creation-shell .bar-actions { display:none; }
+}
+.combined-drums { padding:8px; min-width:0; overflow:hidden; }
+.combined-drum-scroll { min-width:0; max-width:100%; overflow-x:auto; overflow-y:visible; overscroll-behavior-x:contain; }
+.combined-drums .drum-editor--timeline { overflow:visible; display:block; }
+.combined-drums .drum-scroll { overflow:visible; scrollbar-gutter:auto; }
+.combined-drums .drum-surface { min-width:var(--surface-min-width); }
+.combined-drums .combined-drum-time { --drum-label-width:84px; padding-bottom:0; }
+.combined-drums .combined-drum-time .drum-time-ruler { display:grid; grid-template-columns:var(--drum-label-width) minmax(0,1fr); height:38px; }
+.combined-drums .drum-step--outside-part { background:#1a2028aa; cursor:not-allowed; }
+.combined-drums .drum-step--outside-part:hover { background:#1a2028aa; }
+.combined-drum-track { border-top:1px solid #3d5347; padding:7px 0; }
+.combined-drum-destination { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:11px; margin-bottom:6px; }
+.combined-drum-destination select { background:#1c2923; color:#d7e8dc; padding:4px; }
+.combined-drum-track .drum-step-row { min-height:34px; }

@@ -1,0 +1,723 @@
+/* NADI's supplied bird and wordmark, with locally hosted OFL typography.
+   Presentation only: musical grid coordinates, track data and score engraving stay intact. */
+@font-face {
+  font-family: 'Nadi Nunito Sans';
+  src: url('/assets/brand/NunitoSans-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+}
+:root {
+  --brand-font: 'Nadi Nunito Sans', 'Arial Rounded MT Bold', 'Segoe UI', sans-serif;
+  --brand-indigo: #444f80;
+  --brand-night: #212639;
+  --brand-ice: #bccbed;
+  --brand-lilac: #ccc4e3;
+  --brand-peach: #e5bbad;
+  --brand-text: #f2f3fa;
+  --brand-muted: #c6cbdb;
+  --brand-surface: rgb(43 49 69 / .96);
+  --brand-solid: #2b3145;
+  --brand-raised: #393f56;
+  --brand-line: #a7b2cf40;
+  --brand-accent: var(--brand-ice);
+  --brand-button-text: #20283a;
+  --brand-button: #b8c6e8;
+  --brand-play: #a7cdbf;
+  --brand-play-text: #1b3531;
+  --brand-play-line: #9ac4b9;
+  --brand-record-idle: #472f3b;
+  --brand-record-idle-text: #f1c0c4;
+  --brand-record-line: #ab6e7b;
+  --brand-shadow: 0 8px 26px #14192544;
+  --brand-bg-base: #212639;
+  --brand-bg: radial-gradient(ellipse at 18% 0%, #3a405a, transparent 68%);
+  --brand-popover-filter: blur(8px);
+  --font-display: var(--brand-font);
+  --font-body: var(--brand-font);
+}
+/* Portaled dialogs inherit the active appearance through body. */
+body:has(.nadi-experience[data-theme='light']), body:has(.tracking-portal[data-theme='light']),
+:is(.nadi-experience, .tracking-portal)[data-theme='light'] {
+  --brand-text: #252b3b;
+  --brand-muted: #545d73;
+  --brand-surface: rgb(247 248 251 / .97);
+  --brand-solid: #f5f6fa;
+  --brand-raised: #e5e9f3;
+  --brand-line: #52648340;
+  --brand-accent: #44568c;
+  --brand-button-text: #fafbff;
+  --brand-button: #485a8b;
+  --brand-play: #326b61;
+  --brand-play-text: #f3faf8;
+  --brand-play-line: #2b5d54;
+  --brand-record-idle: #f1dde3;
+  --brand-record-idle-text: #743846;
+  --brand-record-line: #b57586;
+  --brand-shadow: 0 8px 26px #27395519;
+  --brand-bg-base: #e9edf3;
+  --brand-bg: radial-gradient(ellipse at 18% 0%, #f6f6fa, transparent 72%);
+}
+body:has(.nadi-experience[data-theme='dark']), body:has(.tracking-portal[data-theme='dark']),
+:is(.nadi-experience, .tracking-portal)[data-theme='dark'] {
+  --brand-surface: rgb(37 40 49 / .97);
+  --brand-solid: #252831;
+  --brand-raised: #313641;
+  --brand-line: #a7b2cf38;
+  --brand-muted: #c1c6d2;
+  --brand-bg-base: #191c23;
+  --brand-bg: radial-gradient(ellipse at 18% 0%, #262b37, transparent 68%);
+}
+body { font-family: var(--brand-font); background: var(--brand-bg); }
+:is(.nadi-experience, .tracking-portal)[data-theme] {
+  --glass-text: var(--brand-text); --glass-muted: var(--brand-muted);
+  --glass-surface: var(--brand-surface); --glass-solid: var(--brand-solid);
+  --glass-line: var(--brand-line); --glass-accent: var(--brand-accent);
+  --glass-shadow: var(--brand-shadow); --glass-bg: var(--brand-bg);
+  --tp-text: var(--brand-text); --tp-muted: var(--brand-muted);
+  --tp-surface: var(--brand-surface); --tp-surface-strong: var(--brand-solid);
+  --tp-line: var(--brand-line); --tp-line-soft: var(--brand-line);
+  --tp-accent: var(--brand-accent); --tp-accent-text: var(--brand-button-text);
+  --tp-button: var(--brand-button); --tp-shadow: var(--brand-shadow);
+  --tp-glass: var(--brand-surface); --tp-solid: var(--brand-solid);
+  --tp-glint: color-mix(in srgb, var(--brand-lilac) 12%, transparent);
+  --tp-edge: var(--brand-line); --tp-depth: rgba(19, 10, 65, .26);
+  --tp-ribbon-a: #6551b0; --tp-ribbon-b: #7862b5;
+  --ink-0: var(--brand-night); --ink-1: var(--brand-surface); --ink-2: var(--brand-solid);
+  --ink-3: var(--brand-raised); --ink-4: var(--brand-raised);
+  --text: var(--brand-text); --text-soft: var(--brand-muted); --muted: var(--brand-muted);
+  --line: var(--brand-line); --line-strong: var(--brand-accent);
+  --teal: var(--brand-accent); --teal-strong: var(--brand-accent);
+  --teal-wash: color-mix(in srgb, var(--brand-accent) 13%, transparent);
+  --violet: var(--brand-lilac); --gold: var(--brand-peach);
+  --font-display: var(--brand-font); --font-body: var(--brand-font);
+  color: var(--brand-text); background: var(--brand-bg); font-family: var(--brand-font);
+}
+.tracking-portal[data-theme] .tp-backdrop { background: var(--brand-bg); }
+.tracking-portal[data-theme] .tp-backdrop::before, .tracking-portal[data-theme] .tp-backdrop::after { opacity: .24; border-color: var(--brand-line); box-shadow: none; }
+.tracking-portal[data-theme='light'] { --tp-ribbon-a: var(--brand-ice); --tp-ribbon-b: var(--brand-peach); }
+.tracking-portal[data-theme='dark'] { --tp-ribbon-a: #43318a; --tp-ribbon-b: #5a4188; }
+.tracking-portal[data-theme] .tp-surface { border-color: var(--brand-line); box-shadow: var(--brand-shadow); }
+.tracking-portal[data-theme] :is(.tp-topbar,.tp-surface,.tp-heading) {
+  background: var(--brand-surface); backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 1px solid var(--brand-line); box-shadow: var(--brand-shadow);
+}
+.tracking-portal[data-theme] .tp-heading {
+  border-radius: 24px; padding: clamp(20px, 2.4vw, 32px); margin: 0 0 24px;
+  align-items: center; gap: 24px; flex-wrap: wrap;
+}
+.tracking-portal .tp-heading > div:first-child { flex: 1 1 340px; min-width: 0; }
+.tracking-portal .tp-heading p { max-width: 65ch; line-height: 1.6; }
+.tracking-portal .tp-presence { white-space: normal; line-height: 1.5; }
+.tracking-portal .tp-surface > h2:first-child { margin-top: 0; }
+.tracking-portal .tp-surface > p { line-height: 1.6; max-width: 72ch; }
+.tracking-portal .tp-surface > label { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-block: 16px; }
+.tracking-portal .tp-surface > label select { flex: 0 1 auto; }
+.tracking-portal .tp-main > .tp-surface { margin-block: 0 24px; }
+.tracking-portal .tp-main > .tp-home-grid { margin-top: 24px; }
+.tracking-portal .tp-page { width: min(1460px, calc(100% - clamp(24px, 5vw, 64px))); }
+.tracking-portal :is(.tp-list-copy,.tp-heading,.tp-note,.tp-command-heading) { overflow-wrap: anywhere; }
+.tracking-portal .tp-topbar::after, .tracking-portal .tp-surface::after { opacity: .4; }
+.tracking-portal[data-theme] .tp-backdrop::before, .tracking-portal[data-theme] .tp-backdrop::after { filter: blur(24px); opacity: .14; }
+.tracking-portal[data-theme] :is(.tp-presence button,.tp-banner button,.tp-text-button) { color: var(--brand-accent); }
+.nadi-experience .creation-shell.studio-workspace {
+  --nadi-text: var(--brand-text); --nadi-muted: var(--brand-muted);
+  --nadi-bg: var(--brand-night); --nadi-panel: var(--brand-surface); --nadi-raised: var(--brand-solid); --nadi-line: var(--brand-line);
+  --nadi-teal: var(--brand-accent); --nadi-emerald: var(--brand-accent); --nadi-mint: var(--brand-ice); --nadi-gold: var(--brand-peach);
+  font-family: var(--brand-font);
+}
+.nadi-experience .studio-workspace :is(h1,h2,h3,button,summary,input,select,textarea),
+.tracking-portal :is(h1,h2,h3,h4,button,input,select,textarea),
+.nadi-experience .app-shell :is(h1,h2,h3,.eyebrow,.brand,button) { font-family: var(--brand-font); }
+.tracking-portal[data-theme] .tp-topbar { background: var(--brand-surface); }
+.tracking-portal[data-theme] :is(.tp-nav button.active,.tp-note) { background: color-mix(in srgb, var(--brand-solid) 88%, transparent); }
+.tracking-portal[data-theme] .tp-primary { box-shadow: 0 8px 22px rgba(53, 24, 117, .2); }
+.tracking-portal[data-theme] .tp-secondary { background: var(--brand-surface); color: var(--brand-text); }
+.tracking-portal[data-theme] .tp-brand { letter-spacing: normal; }
+.nadi-experience .studio-workspace .sw-brand { margin-right: 8px; letter-spacing: normal; }
+.nadi-experience .studio-workspace :is(.studio-mira-action,.studio-mira-user,.studio-mira-example,.studio-mira-attachment,.v4-recovery-controls) { background: var(--brand-solid); border-color: var(--brand-line); color: var(--brand-text); }
+.nadi-experience .studio-workspace .v4-recovery-controls :is(p,dt,dd,summary span) { color: var(--brand-muted); }
+.nadi-experience .studio-workspace .studio-mira-action { border-left-color: var(--brand-lilac); }
+.nadi-experience[data-theme='dark'] .studio-workspace .composing-editor .roll-note { background: #c9c0f5; color: #251849; border-color: #e8deff; }
+.nadi-metronome-beats i[data-active='true'] { background: var(--brand-lilac); color: #251849; border-color: var(--brand-ice); }
+.playability-information { border-left-color: var(--brand-accent); }
+.playability-panel :focus-visible { outline-color: var(--brand-accent); }
+
+/* Supplied artwork is used as imagery; the wordmark is not retyped. */
+.nadi-brand { display: inline-flex; align-items: center; gap: 9px; flex: none; vertical-align: middle; }
+.nadi-bird { display: inline-block; flex: none; width: 35px; height: 35px; border-radius: 25%; overflow: hidden; vertical-align: middle; }
+.nadi-bird img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.18); }
+.nadi-bird { box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand-lilac) 25%, transparent), 0 4px 14px rgba(14, 7, 52, .15); }
+.nadi-wordmark, svg.nadi-wordmark, .nadi-wordmark svg { display: block; width: 110px; height: 35px; max-width: none; flex: none; overflow: hidden; }
+.nadi-brand--compact .nadi-bird { width: 28px; height: 28px; }
+.nadi-brand--compact .nadi-wordmark { width: 88px; height: 28px; }
+.nadi-appearance-bar .nadi-bird { width: 29px; height: 29px; }
+.nadi-appearance-bar .nadi-wordmark { width: 88px; height: 28px; }
+.sw-brand .nadi-bird { width: 25px; height: 25px; }
+.sw-brand .nadi-wordmark { width: 77px; height: 25px; }
+.tp-brand .nadi-bird { width: 43px; height: 43px; }
+.tp-brand .nadi-wordmark { width: 123px; height: 39px; }
+.tp-auth-brand { display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.tp-auth-brand { flex-direction: column; gap: 12px; }
+.tp-auth-brand p { margin: 0; color: var(--brand-muted); font-weight: 700; }
+.nadi-brand-context { font-size: 11px; color: var(--brand-muted); letter-spacing: .12em; text-transform: uppercase; }
+.tp-auth-brand .nadi-brand { flex-direction: column; gap: 12px; }
+.tp-auth-brand .nadi-bird { width: 122px; height: 122px; box-shadow: 0 12px 35px rgba(15, 6, 69, .2); }
+.tp-auth-brand .nadi-wordmark { width: 185px; height: 59px; }
+.brand:has(.nadi-brand) { gap: 0; letter-spacing: normal; }
+.nadi-experience .app-shell .brand__pattern { display: none; }
+
+/* Dialogs share the UI brand. The engraved score and print document stay black on white. */
+.nadi-score-overlay { color: var(--brand-text); font-family: var(--brand-font); background: rgba(12, 7, 43, .79); }
+.nadi-score-dialog { background: var(--brand-solid); border-color: var(--brand-line); box-shadow: var(--brand-shadow); }
+.nadi-score-header,.nadi-score-tools { background: var(--brand-surface); border-color: var(--brand-line); }
+.nadi-score-header h2 { color: var(--brand-text); font-family: var(--brand-font); letter-spacing: -.02em; }
+.nadi-score-eyebrow { color: var(--brand-accent); }
+.nadi-score-header p,.nadi-score-info p,.nadi-score-tools label { color: var(--brand-muted); }
+.nadi-score-dialog :is(button,select),.nadi-score-edit-tools input[type='number'] { color: var(--brand-text); background: var(--brand-solid); border-color: var(--brand-line); font-family: var(--brand-font); }
+.nadi-score-dialog .nadi-score-primary { color: var(--brand-button-text); background: var(--brand-button); border-color: var(--brand-line); }
+.nadi-score-dialog :is(button,select,input):focus-visible { outline-color: var(--brand-accent); }
+.nadi-score-editor,.nadi-score-import { color: var(--brand-text); background: var(--brand-surface); border-color: var(--brand-line); }
+.nadi-score-editor p { color: var(--brand-muted); }
+.nadi-score-sidebar { border-color: var(--brand-line); }
+.nadi-score-sidebar .playability-panel { color: var(--brand-text); border-color: var(--brand-line); background: color-mix(in srgb, var(--brand-peach) 5%, var(--brand-solid)); }
+.nadi-score-sidebar .playability-panel p { color: var(--brand-muted); }
+.nadi-score-sidebar .playability-panel a { color: var(--brand-accent); }
+.nadi-score-sidebar .playability-panel select { color: var(--brand-text); background: var(--brand-solid); }
+.nadi-score-note-list button[aria-pressed='true'] { background: var(--brand-button); color: var(--brand-button-text); }
+.nadi-score-edit-tools input[type='checkbox'] { accent-color: var(--brand-accent); }
+.workspace-setup { color: var(--brand-text); background: var(--brand-solid); border-color: var(--brand-line); font-family: var(--brand-font); }
+.workspace-setup :is(h2,button,input,select) { font-family: var(--brand-font); }
+.workspace-setup :is(p,.workspace-setup-eyebrow) { color: var(--brand-muted); }
+.workspace-setup :is(button,select,input):focus-visible { outline-color: var(--brand-accent); }
+/* Native select semantics, with a branded top-layer picker in supporting browsers.
+   Older browsers retain their accessible system picker and a themed trigger. */
+:is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select {
+  font-family: var(--brand-font); color: var(--brand-text); background-color: var(--brand-solid);
+  border: 1px solid var(--brand-line); border-radius: 12px; padding: 8px 12px;
+  max-width: 100%; min-width: 0; cursor: pointer; line-height: 1.4;
+}
+:is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select:focus-visible {
+  outline: 2px solid var(--brand-accent); outline-offset: 3px;
+}
+:is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select:disabled { cursor: not-allowed; opacity: .55; }
+@supports (appearance: base-select) {
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select,
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select::picker(select) { appearance: base-select; }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select { gap: 14px; align-items: center; }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select::picker-icon { color: var(--brand-accent); font-size: .8em; }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select::picker(select) {
+    color: var(--brand-text); background: var(--brand-solid); font: inherit;
+    border: 1px solid var(--brand-line); border-radius: 14px; padding: 6px;
+    box-shadow: var(--brand-shadow); margin-block: 6px; max-height: min(320px, 65dvh);
+    max-width: calc(100vw - 24px); overflow: auto;
+  }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select option {
+    padding: 9px 12px; border-radius: 9px; color: var(--brand-text); background: transparent;
+    white-space: normal; overflow-wrap: anywhere; cursor: pointer; gap: 10px;
+  }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select option:is(:checked, :hover, :focus-visible) {
+    color: var(--brand-text); background: var(--brand-raised); outline: none;
+  }
+  :is(.tracking-portal, .nadi-experience, .nadi-score-dialog, .workspace-setup) select option::checkmark { color: var(--brand-accent); }
+}
+@media(max-width:700px) {
+  .tracking-portal .tp-heading > div:first-child { flex-basis: auto; }
+  .tracking-portal .tp-heading { align-items: stretch; justify-content: flex-start; padding: 20px; gap: 18px; }
+  .tracking-portal .tp-heading > div { width: 100%; }
+  .tracking-portal .tp-presence { align-items: flex-start; }
+  .tracking-portal .tp-heading h1 { font-size: clamp(1.75rem, 7vw, 2.2rem); }
+  .tracking-portal .tp-surface > label { align-items: stretch; flex-direction: column; }
+  .tracking-portal .tp-surface > label select { width: 100%; }
+  .nadi-identity strong { font-size: 11px; }
+  .nadi-location { display: none; }
+  .nadi-appearance { gap: 5px; font-size: 11px; }
+  .nadi-appearance-bar { padding-inline: 12px; }
+  .nadi-appearance-bar .nadi-wordmark { width: 72px; height: 23px; }
+  .tp-brand .nadi-wordmark { width: 94px; height: 30px; }
+  .tp-brand .nadi-bird { width: 34px; height: 34px; }
+  .tp-auth-brand .nadi-bird { width: 90px; height: 90px; }
+}
+
+/* One navigation language: rounded targets, quiet symbols, names on demand. */
+.nadi-nav-item { display: inline-flex; align-items: center; justify-content: center; }
+.nadi-nav-item svg { display: block; flex: none; }
+:is(button,summary):has(> .nadi-nav-item) { position: relative; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.nadi-nav-label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:is(button,summary):is(:hover,:focus-visible) > .nadi-nav-item .nadi-nav-label {
+  width: max-content; max-width: min(220px, 70vw); height: auto; clip-path: none; overflow: visible; margin: 0;
+  inset: calc(100% + 9px) auto auto 50%; transform: translateX(-50%); z-index: 150;
+  border-radius: 11px; padding: 8px 12px; border: 1px solid var(--brand-line);
+  background: var(--brand-solid); color: var(--brand-text); box-shadow: var(--brand-shadow);
+  font: 600 12px/1.4 var(--brand-font); pointer-events: none;
+}
+.nadi-experience .studio-workspace :is(.sw-selector,.sw-transport) :is(button,summary):has(> .nadi-nav-item),
+.tracking-portal :is(.tp-nav button,.tp-signout) { min-width: 40px; min-height: 40px; padding: 9px; border-radius: 14px; }
+.tracking-portal .tp-topbar { z-index: 10; }
+.nadi-experience .creation-shell.studio-workspace { grid-template-rows: auto auto auto minmax(0,1fr) auto; }
+.nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) { margin: 5px 12px; border: 1px solid var(--brand-line); border-radius: 20px; padding: 7px 10px; gap: 7px; background: var(--brand-surface); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.nadi-experience .studio-workspace :is(.sw-panel,.sw-mira>.studio-mira,.sw-menu>div,.idea-pad) { border-radius: 22px; background: var(--brand-surface); backdrop-filter: none; -webkit-backdrop-filter: none; border-color: var(--brand-line); }
+.nadi-experience .studio-workspace :is(.sw-panel-heading,.sw-slot-tabs,.v4-track-controls,.v4-editor-context) { background: color-mix(in srgb, var(--brand-solid) 92%, transparent); }
+.nadi-experience .studio-workspace .sw-panel-heading { padding: 9px 12px; }
+.nadi-experience .studio-workspace :is(input,textarea,select) { border-radius: 10px; }
+.nadi-experience .studio-workspace .sw-menu>div { padding: 14px; gap: 9px; }
+.nadi-account-strip { margin: 5px 12px 8px; border: 1px solid var(--brand-line); border-radius: 20px; background: var(--brand-surface); backdrop-filter: none; -webkit-backdrop-filter: none; color: var(--brand-muted); font-size: 12px; }
+.nadi-account-strip a { color: var(--brand-accent); }
+.nadi-account-strip button { border: 1px solid var(--brand-line); border-radius: 12px; background: var(--brand-solid); color: var(--brand-text); padding: 8px 12px; font: inherit; }
+.nadi-score-dialog { border-radius: 24px; overflow: hidden; }
+.nadi-score-dialog :is(button,select,input,.nadi-score-editor,.nadi-score-import) { border-radius: 12px; }
+@media (pointer: coarse) {
+  :is(button,summary):has(> .nadi-nav-item) { gap: 5px; }
+  .nadi-nav-item { flex-direction: column; gap: 4px; }
+  .nadi-nav-label { position: static; width: auto; height: auto; clip-path: none; margin: 0; font-size: 10px; line-height: 1.2; }
+}
+@media (max-width: 700px) {
+  .nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) { margin-inline: 6px; gap: 4px; padding: 6px; flex-wrap: wrap; }
+  .nadi-account-strip { margin-inline: 6px; }
+  .tracking-portal .tp-nav { width: auto; order: initial; }
+  .tracking-portal .tp-nav button { flex: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :is(.tracking-portal,.nadi-experience) :is(.tp-surface,.tp-heading,.tp-topbar,.sw-panel,.sw-selector,.sw-transport,.nadi-account-strip) { background: var(--brand-solid); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.tracking-portal,.nadi-experience) :is(button,summary,select) { transition: none; }
+}
+
+/* Feedback and reply forms use the same spacing and field treatment as the studio. */
+.tracking-portal .tp-surface form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 24px; padding: 20px; border: 1px solid var(--brand-line); border-radius: 20px; background: color-mix(in srgb,var(--brand-solid) 86%,transparent); }
+.tracking-portal .tp-surface form h3 { grid-column: 1/-1; margin: 0; }
+.tracking-portal .tp-surface form label { display: flex; flex-direction: column; align-items: stretch; gap: 8px; min-width: 0; font-size: 14px; line-height: 1.5; }
+.tracking-portal .tp-surface form label:has(textarea),.tracking-portal .tp-note form label { grid-column: 1/-1; }
+.tracking-portal .tp-surface form :is(input,textarea,select) { width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid var(--brand-line); border-radius: 12px; padding: 11px 13px; color: var(--brand-text); background: var(--brand-solid); font: inherit; min-height: 44px; }
+.tracking-portal .tp-surface form textarea { min-height: 120px; resize: vertical; }
+.tracking-portal .tp-surface form :is(input,textarea)::placeholder { color: var(--brand-muted); opacity: .8; }
+.tracking-portal .tp-surface form button { justify-self: start; border: 1px solid var(--brand-line); border-radius: 12px; padding: 11px 17px; min-height: 44px; font: inherit; color: var(--brand-button-text); background: var(--brand-button); }
+.tracking-portal .tp-surface form button:disabled { color: var(--brand-muted); background: var(--brand-raised); opacity: .65; cursor: not-allowed; }
+.tracking-portal .tp-login-card form { display: flex; flex-direction: column; padding: 0; border: 0; background: transparent; }
+.nadi-experience .studio-workspace .sw-identity { margin: 3px 12px; padding: 7px 12px; border-radius: 14px; background: var(--brand-surface); }
+@media(max-width:700px) { .tracking-portal .tp-surface form { grid-template-columns: minmax(0,1fr); padding: 16px; } }
+
+/* Consistent mentor review layout and calm controls. */
+.tracking-portal .tp-mentor-layout { grid-template-columns: minmax(240px, .72fr) minmax(0, 1.8fr); gap: 24px; align-items: start; }
+.tracking-portal .tp-mentor-layout > div { min-width: 0; }
+.tracking-portal .tp-selected-heading { margin: 0 0 20px; padding: 20px 24px; border: 1px solid var(--brand-line); border-radius: 20px; background: var(--brand-surface); }
+.tracking-portal .tp-detail-stack { gap: 24px; }
+.tracking-portal .tp-mentor-layout .tp-surface { padding: clamp(20px,2.2vw,30px); }
+.tracking-portal .tp-surface :is(button,summary):not(:has(.nadi-nav-item),.tp-learner-row,.tp-primary) { border: 1px solid var(--brand-line); border-radius: 12px; padding: 10px 14px; min-height: 40px; background: var(--brand-solid); color: var(--brand-text); font: inherit; cursor: pointer; }
+.tracking-portal .tp-surface button:disabled { opacity: .55; cursor: not-allowed; }
+.tracking-portal .tp-surface .tp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 20px; }
+.tracking-portal .tp-surface details { margin-block: 12px; }
+.tracking-portal .tp-surface details > summary { width: 100%; box-sizing: border-box; line-height: 1.5; }
+.tracking-portal .tp-surface :is(h3,h4) { line-height: 1.35; margin-block: 24px 12px; }
+.tracking-portal .tp-surface ul { padding-left: 22px; margin-block: 14px 24px; line-height: 1.6; }
+.tracking-portal .tp-surface li + li { margin-top: 8px; }
+.tracking-portal .tp-note { padding: 20px; border-radius: 18px; margin-block: 20px; }
+.tracking-portal .tp-note h3:first-child { margin-top: 0; }
+.tracking-portal .tp-duo { gap: 24px; }
+.tracking-portal .tp-mentor-layout .tp-progress-grid { grid-template-columns: repeat(auto-fit,minmax(90px,1fr)); }
+.nadi-experience .studio-workspace :is(.sw-selector,.sw-transport) :is(button,summary):has(> .nadi-nav-item) { width: 40px; flex: 0 0 40px; transition: none; box-shadow: none; }
+@media(max-width:1000px) { .tracking-portal .tp-mentor-layout { grid-template-columns: minmax(0,1fr); } .tracking-portal .tp-duo { grid-template-columns: minmax(0,1fr); } }
+.tracking-portal .tp-mentor-layout > div > .tp-surface { margin-bottom: 24px; }
+.tracking-portal .tp-surface :is(textarea,input,select):focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+.tracking-portal .tp-mentor-layout { grid-template-columns: minmax(0,1fr); }
+.tracking-portal .tp-mentor-layout > .tp-surface .tp-list { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
+@media(max-width:1100px) { .tracking-portal .tp-mentor-layout > .tp-surface .tp-list { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .tracking-portal .tp-mentor-layout > .tp-surface .tp-list { grid-template-columns: minmax(0,1fr); } }
+
+/* Colour hierarchy from the bird: cool blue for creating, peach for feedback. */
+:root {
+  --brand-cool: var(--brand-ice); --brand-feedback: var(--brand-peach); --brand-success: #b9d4c8;
+}
+:is(.tracking-portal,.nadi-experience)[data-theme='light'] {
+  --brand-cool: #276989; --brand-feedback: #94462d; --brand-success: #22664d;
+}
+.tracking-portal[data-theme] .tp-heading {
+  background: linear-gradient(115deg,color-mix(in srgb,var(--brand-solid) 92%,#090e22),color-mix(in srgb,var(--brand-solid) 86%,var(--brand-lilac)));
+  border-color: color-mix(in srgb,var(--brand-ice) 35%,var(--brand-line));
+}
+.tracking-portal[data-theme] .tp-topbar { background: color-mix(in srgb,var(--brand-solid) 91%,#080d26); }
+.tracking-portal[data-theme='light'] .tp-topbar { background: rgba(255,255,255,.93); }
+.tracking-portal[data-theme] .tp-review { background: color-mix(in srgb,var(--brand-solid) 89%,#182535); }
+.tracking-portal[data-theme='light'] .tp-review { background: #fcfbff; }
+.tracking-portal .tp-review > h2 { display: flex; align-items: center; gap: 12px; }
+.tracking-portal .tp-review > h2::before { content: ''; flex: none; width: 5px; height: 23px; border-radius: 5px; background: var(--brand-cool); }
+.tracking-portal .tp-surface .tp-primary { background: var(--brand-button); color: var(--brand-button-text); border-color: transparent; font-weight: 800; }
+.tracking-portal .tp-surface .tp-feedback-form { border-color: color-mix(in srgb,var(--brand-feedback) 35%,transparent); background: color-mix(in srgb,var(--brand-solid) 94%,var(--brand-peach)); }
+.tracking-portal .tp-surface .tp-feedback-form h3 { color: var(--brand-feedback); }
+.tracking-portal .tp-surface .tp-feedback-form button:not(:disabled),
+.tracking-portal .tp-surface .tp-feedback-thread form button:not(:disabled) { background: var(--brand-button); color: var(--brand-button-text); border-color: transparent; font-weight: 800; }
+.tracking-portal .tp-feedback-thread { border-inline-start: 3px solid var(--brand-feedback); }
+.tracking-portal .tp-feedback-thread > small { color: var(--brand-feedback); }
+.tracking-portal .tp-stat:nth-child(1) strong,.tracking-portal .tp-stat:nth-child(3) strong { color: var(--brand-cool); }
+.tracking-portal .tp-stat:nth-child(2) strong { color: var(--brand-success); }
+.tracking-portal .tp-stat:nth-child(4) strong,.tracking-portal .tp-stat:nth-child(5) strong { color: var(--brand-feedback); }
+.tracking-portal .tp-home-grid .tp-feature { border-color: color-mix(in srgb,var(--brand-cool) 45%,transparent); }
+.tracking-portal .tp-icon { background: color-mix(in srgb,var(--brand-cool) 18%,var(--brand-solid)); color: var(--brand-cool); }
+.tracking-portal .tp-icon.tp-peach { background: color-mix(in srgb,var(--brand-peach) 16%,var(--brand-solid)); color: var(--brand-feedback); }
+.tracking-portal .tp-icon.tp-violet { background: color-mix(in srgb,var(--brand-lilac) 20%,var(--brand-solid)); color: var(--brand-accent); }
+.tracking-portal .tp-learner-row.selected { border-color: var(--brand-cool); background: color-mix(in srgb,var(--brand-solid) 88%,var(--brand-ice)); }
+.tracking-portal .tp-learner-row:nth-child(2) .tp-avatar { background: linear-gradient(135deg,#ffdec4,#efc8db); color: #492947; }
+.tracking-portal .tp-learner-row:nth-child(3) .tp-avatar { background: linear-gradient(135deg,#c2e9dd,#b8dcf3); color: #204a47; }
+.tracking-portal .tp-learner-row:nth-child(4) .tp-avatar { background: linear-gradient(135deg,#e3d4ff,#cbb9eb); color: #453066; }
+.nadi-experience .studio-workspace .sw-selector button[aria-pressed='true'] { color: var(--brand-cool); border-color: var(--brand-cool); background: color-mix(in srgb,var(--brand-solid) 84%,var(--brand-ice)); }
+.nadi-experience .studio-workspace .sw-mira-toggle { color: var(--brand-feedback); }
+.tracking-portal[data-theme] .tp-command-panel { background: color-mix(in srgb,var(--brand-solid) 87%,var(--brand-peach)); border-color: color-mix(in srgb,var(--brand-feedback) 28%,var(--brand-line)); }
+.tracking-portal .tp-command-panel .tp-eyebrow,.tracking-portal .tp-heading .tp-eyebrow { color: var(--brand-feedback); }
+.tracking-portal .tp-command-panel .tp-command-heading .tp-secondary { color: var(--brand-feedback); border-color: color-mix(in srgb,var(--brand-feedback) 50%,transparent); }
+.tracking-portal[data-theme] .tp-nav button.active { background: var(--brand-raised); color: var(--brand-text); border-color: var(--brand-line); }
+
+/* Compact controls still need readable labels and a comfortable hit area. */
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button) {
+  min-height: 34px; font-size: 13px; font-weight: 650; line-height: 1.35;
+  color: var(--brand-text); background-color: var(--brand-solid);
+}
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button):disabled { opacity: 1; color: var(--brand-muted); background: color-mix(in srgb,var(--brand-solid) 78%,var(--brand-surface)); border-color: var(--brand-line); }
+.nadi-experience .studio-workspace .sw-panel-heading button { min-width: 34px; min-height: 34px; font-size: 13px; }
+.tracking-portal .tp-surface :is(button,summary) { font-size: 14px; font-weight: 650; }
+.nadi-account-strip button,.nadi-score-dialog button { min-height: 36px; font-size: 13px; font-weight: 650; }
+.nadi-experience .studio-workspace :is(input,select) { font-size: 13px; }
+:is(button,summary):is(:hover,:focus-visible) > .nadi-nav-item .nadi-nav-label { font-size: 13px; }
+.tracking-portal .tp-surface form.tp-command-form { display: flex; flex-direction: column; }
+.tracking-portal .tp-list-copy p { white-space: pre-line; }
+
+/* Shared control geometry: minimum heights must centre content, not add empty
+   space below an inline baseline. Musical hit regions retain their own layout. */
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.v4-sound,.roll-beats button,.v4-ruler button),
+.tracking-portal button:not(.tp-learner-row),
+.nadi-account-strip button,.nadi-score-dialog button,.workspace-setup button {
+  display: inline-flex; align-items: center; justify-content: center;
+  box-sizing: border-box; gap: 6px; text-align: center; vertical-align: middle;
+  line-height: 1.35; padding-block: 8px; transform: none;
+}
+.nadi-experience .studio-workspace .sw-menu > div > button { justify-content: flex-start; text-align: start; }
+.nadi-experience .studio-workspace :is(.v4-add-menu,.v4-track-settings) > summary { min-height: 40px; }
+.nadi-experience .studio-workspace .sw-panel-heading > button:last-child { line-height: 1; }
+.tracking-portal[data-theme] :is(.tp-primary,.tp-secondary) { transition-property: box-shadow; }
+.tracking-portal :is(.tp-primary,.tp-secondary):is(:hover,:active) { transform: none; }
+/* Icons have one fixed box in every state; their labels never participate in
+   layout, inherit editor transforms, or animate from a clipped one-pixel box. */
+:is(.nadi-experience,.tracking-portal) :is(button,summary):has(> .nadi-nav-item) {
+  width: 40px; height: 40px; min-width: 40px; min-height: 40px; flex: 0 0 40px;
+  padding: 0; line-height: 1; transform: none; transition: none;
+}
+.nadi-nav-item { width: 20px; height: 20px; line-height: 1; }
+.nadi-nav-label { transition: none; animation: none; text-align: center; }
+@media(pointer:fine) {
+  :is(button,summary):is(:hover,:focus-visible) > .nadi-nav-item .nadi-nav-label {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    clip-path: inset(50%); overflow: hidden; border: 0; transform: none;
+  }
+}
+.nadi-nav-tooltip {
+  position: fixed; z-index: 10000; pointer-events: none; box-sizing: border-box;
+  width: max-content; max-width: min(220px,calc(100vw - 24px));
+  padding: 9px 13px; border-radius: 14px; border: 1px solid var(--brand-line);
+  background: var(--brand-solid); color: var(--brand-text); box-shadow: var(--brand-shadow);
+  font: 650 13px/1.4 var(--brand-font); text-align: center; overflow-wrap: anywhere;
+}
+.sw-metronome-group { display: inline-flex; align-items: center; gap: 4px; flex: none; }
+.nadi-experience .studio-workspace .sw-metronome-menu > summary { width: 28px; height: 40px; padding: 0; }
+.nadi-experience .studio-workspace .sw-metronome-menu > div { width: 310px; left: 0; right: auto; }
+.nadi-experience .studio-workspace .nadi-metronome { display: grid; gap: 14px; padding: 12px; border-color: var(--brand-line); border-radius: 18px; }
+.nadi-experience .studio-workspace .nadi-metronome label { flex-wrap: wrap; }
+.nadi-experience .studio-workspace .nadi-metronome-beats i { display: grid; place-items: center; line-height: 1; }
+/* Dense music workspace: centre content within controls, retain left-to-right
+   toolbar grouping and leave the available height to the score/piano roll. */
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button) { padding-block: 5px; }
+.nadi-experience .studio-workspace :is(.v4-add-menu,.v4-track-settings) > summary { min-height: 34px; }
+.nadi-experience .studio-workspace .editor-hint { border-radius: 14px; margin-inline: 4px; }
+.nadi-experience .studio-workspace .sw-panel-heading { padding-block: 6px; }
+.sw-project-details { display: flex; flex: 1 1 180px; min-width: 0; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding-inline: 16px; text-align: center; }
+.sw-project-details strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: var(--brand-text); }
+.sw-project-details span { color: var(--brand-muted); font-size: 11px; white-space: nowrap; }
+.nadi-experience .studio-workspace .notes-part-toolbar { display: flex; align-items: center; flex-wrap: wrap; flex: none; border-bottom: 1px solid var(--brand-line); }
+.nadi-experience .studio-workspace .notes-part-toolbar > :is(.v4-track-controls,.v4-editor-context) { flex: 1 1 auto; padding: 5px 10px; border-bottom: 0; background: transparent; gap: 6px 8px; }
+.nadi-experience .studio-workspace .sw-save-state { margin-left: 0; }
+.nadi-experience .studio-workspace .sw-transport { padding-inline: 20px; gap: 8px; }
+.nadi-experience .studio-workspace .sw-brand { display: flex; align-items: center; padding: 3px; margin-right: 8px; }
+.sw-destination { flex: 1; padding-inline: 16px; color: var(--brand-muted); min-width: 0; font-size: 12px; text-align: center; }
+.sw-destination strong { color: var(--brand-text); }
+.nadi-experience .studio-workspace .sw-mira-toggle { margin-left: 0; }
+@media(max-width:900px) {
+  .sw-destination { display: none; }
+  .nadi-experience .studio-workspace .sw-mira-toggle { margin-left: auto; }
+}
+@media(max-width:700px) {
+  .nadi-experience .studio-workspace .sw-transport { padding-inline: 12px; }
+  .sw-project-details { padding-inline: 4px; }
+}
+@media(max-width:1100px) {
+  .nadi-experience .studio-workspace .sw-transport { flex-wrap: wrap; }
+  .sw-project-details { flex-basis: 200px; }
+}
+@media(max-width:700px) {
+  .nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) { position: relative; }
+  .nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) .sw-menu { position: static; }
+  .nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) .sw-menu > div { left: 8px; right: 8px; width: auto; max-width: none; }
+}
+.nadi-experience .studio-workspace :is(.sw-selector,.sw-transport),.tracking-portal .tp-topbar { overflow: visible; }
+@media(pointer:coarse) {
+  :is(.nadi-experience,.tracking-portal) :is(button,summary):has(> .nadi-nav-item) { width: auto; height: auto; min-height: 52px; flex-basis: auto; padding: 7px; }
+  .nadi-nav-item { width: auto; height: auto; }
+  :is(button,summary):is(:hover,:focus-visible) > .nadi-nav-item .nadi-nav-label {
+    position: static; inset: auto; transform: none; padding: 0; border: 0;
+    box-shadow: none; background: none; font-size: 10px; color: inherit;
+  }
+}
+
+/* A subtle sheen is enough for stationary surfaces. The score and editor
+   panels use no backdrop blur, including while scrolling or editing. */
+:root {
+  --brand-glass-sheen: linear-gradient(130deg,#ffffff08,transparent);
+}
+.tracking-portal[data-theme] :is(.tp-topbar,.tp-heading,.tp-surface,.tp-review,.tp-command-panel,.tp-selected-heading),
+.nadi-experience .studio-workspace :is(.sw-panel,.sw-selector,.sw-transport,.sw-identity,.sw-mira>.studio-mira),
+.nadi-experience .nadi-account-strip,.nadi-score-dialog,.workspace-setup {
+  background: var(--brand-glass-sheen),var(--brand-surface);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  border: 1px solid var(--brand-line); border-radius: 28px;
+  box-shadow: var(--brand-shadow);
+}
+.tracking-portal[data-theme] :is(.tp-topbar,.tp-surface)::after { display: none; }
+.tracking-portal[data-theme] .tp-review { border-color: color-mix(in srgb,var(--brand-cool) 32%,var(--brand-line)); }
+.tracking-portal[data-theme] .tp-command-panel { border-color: color-mix(in srgb,var(--brand-feedback) 32%,var(--brand-line)); }
+.tracking-portal .tp-surface :is(.tp-note,form,.tp-feedback-form),
+.nadi-experience .studio-workspace :is(.idea-card,.idea-draft,.studio-mira-action,.studio-mira-connection,.studio-mira-user,.studio-mira-example,.studio-mira-attachment) {
+  background: linear-gradient(130deg,#ffffff12,#ffffff05),color-mix(in srgb,var(--brand-solid) 32%,transparent);
+  border-radius: 20px; box-shadow: inset 0 1px #ffffff20;
+}
+.tracking-portal .tp-surface .tp-feedback-form { background: linear-gradient(130deg,#ffd4b51c,#ffffff05),color-mix(in srgb,var(--brand-solid) 40%,transparent); }
+.nadi-experience .studio-workspace :is(.sw-menu>div,.v4-add-menu>div,.v4-track-settings>div,.studio-range,.note-more>.note-batch-tools,.note-properties.is-compact>.note-inspector) {
+  background: var(--brand-glass-sheen),var(--brand-surface);
+  backdrop-filter: var(--brand-popover-filter); -webkit-backdrop-filter: var(--brand-popover-filter);
+  border: 1px solid var(--brand-line); border-radius: 22px; box-shadow: var(--brand-shadow);
+}
+.nadi-experience .studio-workspace :is(.sw-panel-heading,.v4-track-controls,.v4-editor-context,.sw-slot-tabs),
+.nadi-score-header,.nadi-score-tools { background: linear-gradient(130deg,#ffffff10,#ffffff03); }
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button),
+.tracking-portal .tp-surface :is(button,summary):not(.tp-learner-row),
+.nadi-account-strip button,.nadi-score-dialog button { border-radius: 14px; }
+/* Keep primary colour fills; use glass on neutral controls only. */
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.sw-play,.is-recording,[aria-pressed='true'],[aria-selected='true'],.roll-beats button,.v4-ruler button),
+.nadi-account-strip button {
+  background: linear-gradient(130deg,#ffffff14,#ffffff05),color-mix(in srgb,var(--brand-solid) 50%,transparent);
+  box-shadow: inset 0 1px #ffffff20;
+}
+.nadi-experience .studio-workspace :is(button,summary):has(>.nadi-nav-item):hover { transform: none; box-shadow: inset 0 1px #ffffff30; }
+.tracking-portal .tp-surface form :is(input,textarea,select),
+.nadi-experience .studio-workspace :is(input:not([type='range'],[type='checkbox']),select,textarea) {
+  background-color: color-mix(in srgb,var(--brand-solid) 65%,transparent); border-radius: 14px;
+}
+@supports(appearance:base-select) {
+  :is(.tracking-portal,.nadi-experience,.nadi-score-dialog,.workspace-setup) select::picker(select) {
+    background: var(--brand-glass-sheen),color-mix(in srgb,var(--brand-solid) 90%,transparent);
+    backdrop-filter: var(--brand-popover-filter); border-radius: 20px;
+  }
+}
+@media(prefers-reduced-transparency:reduce) {
+  .tracking-portal[data-theme] :is(.tp-topbar,.tp-heading,.tp-surface,.tp-review,.tp-command-panel,.tp-selected-heading),
+  .nadi-experience .studio-workspace :is(.sw-panel,.sw-selector,.sw-transport,.sw-identity,.sw-mira>.studio-mira,.sw-menu>div),
+  .nadi-experience .nadi-account-strip,.nadi-score-dialog,.workspace-setup {
+    background: var(--brand-solid); backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+}
+
+/* Owner's state language: light glass rests, dark indigo means engaged.
+   Disabled is quiet light glass, never the same fill as an active toggle. */
+:root { --brand-control-active: var(--brand-indigo); --brand-control-active-text: #f5f6fb; }
+:is(.nadi-experience .studio-workspace,.tracking-portal,.nadi-score-dialog,.workspace-setup)
+  :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.tp-learner-row,.tp-primary,.nadi-score-primary,.sw-play,.roll-beats button,.v4-ruler button) {
+  background: color-mix(in srgb,var(--brand-raised) 55%,var(--brand-solid)); color: var(--brand-text);
+  border-color: var(--brand-line); box-shadow: inset 0 1px #ffffff28;
+}
+:is(.nadi-experience .studio-workspace,.tracking-portal,.nadi-score-dialog,.workspace-setup)
+  :is(button,summary):is([aria-pressed='true'],[aria-selected='true'],.active,:active):not(:disabled,.tp-primary,.nadi-score-primary,.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button),
+:is(.nadi-experience .studio-workspace,.tracking-portal,.nadi-score-dialog,.workspace-setup) details[open] > summary {
+  background: var(--brand-control-active); color: var(--brand-control-active-text);
+  border-color: color-mix(in srgb,var(--brand-ice) 50%,var(--brand-line));
+  box-shadow: inset 0 1px #ffffff24;
+}
+.nadi-experience .studio-workspace :is(button,summary):disabled:not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label,.roll-beats button,.v4-ruler button),
+.tracking-portal button:disabled,.nadi-score-dialog button:disabled {
+  background: linear-gradient(130deg,#ffffff0b,#ffffff04); color: var(--brand-muted);
+  border-color: var(--brand-line); box-shadow: none; opacity: .62;
+}
+.nadi-experience .studio-workspace .sw-transport button.sw-play {
+  background: var(--brand-play); color: var(--brand-play-text); border-color: var(--brand-play-line); font-weight: 800;
+}
+.nadi-experience .studio-workspace .sw-transport button.sw-record:enabled {
+  background: var(--brand-record-idle); color: var(--brand-record-idle-text); border-color: var(--brand-record-line);
+}
+.nadi-experience .studio-workspace .sw-transport button.sw-record.is-recording {
+  background: #8b354c; color: #fff; border-color: var(--brand-record-line);
+}
+.nadi-experience .studio-workspace .sw-transport [data-help-target='save-project'] {
+  color: var(--brand-accent); border-color: color-mix(in srgb,var(--brand-accent) 62%,var(--brand-line));
+}
+
+/* A single soft tint gives the working area a quiet backdrop. */
+body,:is(.nadi-experience,.tracking-portal)[data-theme],.tracking-portal[data-theme] .tp-backdrop {
+  background: var(--brand-bg) var(--brand-bg-base);
+}
+.tracking-portal[data-theme] .tp-backdrop::before,.tracking-portal[data-theme] .tp-backdrop::after { display: none; }
+/* Rulers are coordinate surfaces, not rounded action buttons. Their contents
+   must fit the fixed row so no header spills over the first instrument lane. */
+.nadi-experience .studio-workspace .composing-editor .roll-beats {
+  height: 26px; min-height: 26px; align-items: stretch;
+  background: linear-gradient(130deg,#ffffff20,#ffffff0a),var(--brand-solid);
+  box-shadow: 0 1px 0 var(--brand-line);
+}
+.nadi-experience .studio-workspace .composing-editor .roll-beats > :is(button,span),
+.nadi-experience .studio-workspace .v4-ruler > div > button {
+  display: grid; place-items: center; box-sizing: border-box; min-height: 0; height: 100%;
+  padding: 0 2px; border-radius: 0; line-height: 1; font-size: 11px;
+  box-shadow: none; background: transparent; color: var(--brand-text);
+}
+.nadi-experience .studio-workspace .v4-ruler { height: 28px; min-height: 28px; }
+.nadi-experience .studio-workspace .v4-ruler > span { display: flex; align-items: center; padding-block: 0; }
+.nadi-experience .studio-workspace .v4-lane-label > span,
+.nadi-experience .studio-workspace .v4-lane-label > small { width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nadi-experience .studio-workspace .v4-lane-label { line-height: 1.3; gap: 2px; }
+.nadi-experience .studio-workspace .editor-hint { min-height: 34px; gap: 12px; padding: 5px 10px; }
+.nadi-experience .studio-workspace .editor-hint > button { flex: 0 0 28px; width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 10px; }
+.nadi-experience .studio-workspace .composing-editor--compact > .note-tools { flex-wrap: wrap; gap: 6px; padding: 5px 6px; }
+.nadi-experience .studio-workspace .note-tools > :is(button,label,details) { flex-shrink: 0; white-space: nowrap; }
+.nadi-nav-touch-label { display: none; }
+@media(pointer:coarse) {
+  .nadi-experience .studio-workspace :is(.sw-selector,.sw-transport) :is(button,summary):has(>.nadi-nav-item),
+  .tracking-portal :is(button,summary):has(>.nadi-nav-item) {
+    width: 52px; min-width: 52px; height: 52px; min-height: 52px; flex: 0 0 52px; padding: 5px;
+  }
+  .nadi-nav-item { width: 100%; height: auto; gap: 4px; }
+  .nadi-nav-touch-label { display: block; font: 650 9px/1.2 var(--brand-font); white-space: nowrap; color: inherit; }
+  .nadi-nav-label,:is(button,summary):is(:hover,:focus-visible) > .nadi-nav-item .nadi-nav-label {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; clip-path: inset(50%);
+    overflow: hidden; border: 0; box-shadow: none;
+  }
+}
+.tracking-portal .tp-presence button { padding: 8px 12px; border: 1px solid var(--brand-line); border-radius: 12px; min-height: 36px; text-decoration: none; }
+.tracking-portal .tp-home-grid { align-items: start; }
+.sw-project-details strong { max-width: 100%; }
+@media(max-width:900px) { .tracking-portal .tp-home-grid { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:700px) {
+  .sw-project-details { flex-basis: 125px; }
+  .sw-project-details span { white-space: normal; font-size: 10px; }
+  .tracking-portal .tp-list-row:has(>.tp-pill) { display: grid; grid-template-columns: 32px minmax(0,1fr); align-items: start; }
+  .tracking-portal .tp-list-row > .tp-pill { grid-column: 2; justify-self: start; }
+}
+/* Primary paths between composing, readable music and human feedback. */
+.nadi-account-strip .nadi-work-link,.nadi-account-strip .nadi-score-link {
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:48px; padding:10px 18px; border-radius:16px; font-size:15px;
+  font-weight:800; line-height:1.3; text-decoration:none; border:1px solid var(--brand-line);
+  background:var(--brand-button); color:var(--brand-button-text);
+}
+.nadi-account-strip .nadi-score-link { background:var(--brand-raised); color:var(--brand-text); }
+.nadi-account-strip .nadi-score-link small { font-size:11px; font-weight:650; }
+.nadi-account-strip .nadi-work-link:focus-visible,.nadi-account-strip .nadi-score-link:focus-visible { outline:3px solid var(--brand-accent); outline-offset:3px; }
+.nadi-account-strip .nadi-score-link:disabled { opacity:.6; }
+.tracking-portal .tp-composition-preview { margin-block:20px; padding:18px; border:1px solid var(--brand-line); border-radius:22px; background:linear-gradient(130deg,#ffffff16,#ffffff05); min-width:0; }
+.tp-preview-heading { display:flex; gap:14px; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+.tp-preview-heading :is(h3,h4,p) { margin:4px 0; }
+.tp-arrangement-preview { display:grid; gap:6px; margin-bottom:20px; }
+.tp-preview-track { display:grid; grid-template-columns:minmax(130px,22%) minmax(0,1fr); gap:8px; min-height:54px; }
+.tracking-portal .tp-preview-track > button { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; min-width:0; padding:8px 12px; gap:3px; text-align:left; }
+.tp-preview-track > button :is(strong,small) { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tp-preview-clips { position:relative; min-width:0; border-radius:10px; overflow:hidden; background-image:linear-gradient(to right,var(--brand-line) 1px,transparent 1px); background-color:color-mix(in srgb,var(--brand-solid) 50%,transparent); }
+.tracking-portal .tp-preview-clips button { position:absolute; top:7px; height:40px; min-height:0; padding:4px 8px; border-left-width:4px; border-radius:8px; overflow:hidden; background:color-mix(in srgb,var(--brand-accent) 25%,var(--brand-solid)); color:var(--brand-text); }
+.tp-preview-clips button span { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tp-notes-preview { max-height:350px; overflow:auto; border:1px solid var(--brand-line); border-radius:14px; background:var(--brand-solid); scrollbar-color:var(--brand-accent) var(--brand-solid); }
+.tp-notes-preview svg { display:block; }
+.tp-notes-preview text { fill:var(--brand-text); font:11px var(--brand-font); pointer-events:none; }
+.tp-notes-preview line { stroke:var(--brand-line); }
+.tp-preview-white { fill:color-mix(in srgb,var(--brand-raised) 65%,var(--brand-solid)); }
+.tp-preview-black { fill:var(--brand-solid); }
+.tp-preview-note { fill:var(--brand-accent); stroke:var(--brand-text); stroke-width:.5; cursor:pointer; }
+.tp-preview-note.selected,.tp-preview-note:focus { fill:#ffd4b5; stroke:#21164f; stroke-width:2; outline:none; }
+.tp-note-inspection { display:flex; flex-wrap:wrap; align-items:center; gap:12px; padding-top:12px; }
+.tp-sent-questions { margin-top:20px; }
+@media(max-width:700px) {
+  .nadi-account-strip .nadi-work-link,.nadi-account-strip .nadi-score-link { width:100%; }
+  .nadi-account-strip .nadi-score-link { flex-wrap:wrap; }
+  .tracking-portal .tp-composition-preview { padding:12px; }
+  .tp-preview-track { grid-template-columns:120px minmax(0,1fr); }
+}
+.nadi-experience .studio-workspace .composing-editor--compact > .note-tools > .note-batch-tools { display:contents; }
+.nadi-experience .studio-workspace .composing-editor--compact > .note-tools { justify-content:flex-start; align-items:center; }
+.nadi-experience .studio-workspace .composing-editor--compact .selection-count { margin-left:6px; margin-right:0; }
+.nadi-score-direct-tools { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:10px 24px; background:var(--brand-raised); color:var(--brand-text); border-block:1px solid var(--brand-line); }
+.nadi-score-direct-tools span { flex:1; font-size:13px; }
+.nadi-score-note.is-editable { cursor:grab; }
+.nadi-score-note.is-dragging { opacity:.4; cursor:grabbing; }
+.nadi-score-drag-preview { position:fixed; z-index:12000; pointer-events:none; padding:10px 15px; border-radius:14px; background:var(--brand-control-active); border:1px solid var(--brand-line); color:var(--brand-control-active-text); font:700 14px/1.3 var(--brand-font); box-shadow:0 8px 24px #0004; }
+.nadi-experience .studio-workspace .sw-selector .sw-mira-toggle { display:inline-flex; align-items:center; justify-content:center; gap:9px; width:auto; min-width:136px; height:44px; padding:6px 14px; border-color:var(--brand-line); background:var(--brand-raised); color:var(--brand-text); border-radius:15px; }
+.nadi-experience .studio-workspace .sw-selector .sw-mira-toggle[aria-pressed=true] { background:var(--brand-control-active); color:var(--brand-control-active-text); }
+.sw-mira-toggle > span:last-child { display:flex; flex-direction:column; text-align:left; gap:1px; }
+.sw-mira-toggle strong { font-size:14px; line-height:1.2; }
+.sw-mira-toggle small { font-size:10px; line-height:1.2; }
+.sw-mira-spark { font-size:23px; line-height:1; }
+.nadi-experience .nadi-account-strip { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; align-items:stretch; gap:10px; padding:9px 12px; position:relative; z-index:35; }
+.nadi-account-strip .nadi-work-link,.nadi-account-strip .nadi-score-link { width:100%; min-width:0; min-height:64px; display:flex; flex-direction:column; gap:3px; padding:9px 14px; }
+.nadi-account-strip .nadi-work-link small { font-size:11px; font-weight:600; line-height:1.3; }
+.nadi-account-strip .nadi-score-link > span { display:none; }
+.nadi-account-tools { position:relative; display:flex; align-items:stretch; }
+.nadi-account-tools > summary { display:flex; align-items:center; justify-content:center; height:100%; padding:10px 15px; border:1px solid var(--brand-line); border-radius:16px; cursor:pointer; font-weight:700; color:var(--brand-text); }
+.nadi-account-tools > div { position:absolute; top:calc(100% + 8px); right:0; width:310px; max-width:calc(100vw - 30px); padding:14px; display:grid; gap:12px; border:1px solid var(--brand-line); border-radius:20px; background:var(--brand-solid); box-shadow:0 12px 40px #0005; }
+.nadi-sync-message { grid-column:1/-1; grid-row:2; }
+@media(max-width:700px) { .nadi-experience .nadi-account-strip { grid-template-columns:minmax(0,1fr) minmax(0,1fr); } .nadi-account-strip .nadi-work-link,.nadi-account-strip .nadi-score-link { font-size:13px; } .nadi-account-tools { grid-column:1/-1; } .nadi-account-tools > summary { padding:6px 12px; } .nadi-account-tools > div { left:0; right:auto; } }
+.nadi-experience .studio-workspace .composing-editor--timeline .roll-beats > span { background:var(--brand-solid); }
+.nadi-score-window-actions { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.nadi-score-window-actions label { display:flex; align-items:center; gap:6px; font-size:12px; }
+.nadi-score-dialog.nadi-score-dialog--fullscreen { position:fixed; inset:0; width:100vw; height:100dvh; max-width:none; border:0; border-radius:0; }
+.nadi-score-dialog--fullscreen .nadi-score-header { padding:8px 16px; gap:12px; }
+.nadi-score-dialog--fullscreen .nadi-score-header h2 { font-size:19px; margin:0; }
+.nadi-score-dialog--fullscreen .nadi-score-header p { font-size:12px; margin:3px 0 0; }
+.nadi-score-dialog--fullscreen .nadi-score-eyebrow,.nadi-score-dialog--fullscreen .nadi-score-sidebar,.nadi-score-dialog--fullscreen .nadi-score-info { display:none; }
+.nadi-score-dialog--fullscreen .nadi-score-tools { padding:6px 16px; }
+.nadi-score-dialog--fullscreen .nadi-score-tools > label:not(:first-child),.nadi-score-dialog--fullscreen .nadi-score-actions { display:none; }
+.nadi-score-dialog--fullscreen .nadi-score-direct-tools { padding:6px 16px; }
+.nadi-score-dialog--fullscreen .nadi-score-workarea { display:flex; flex:1; min-height:0; overflow:hidden; }
+.nadi-score-dialog--fullscreen .nadi-score-scroll { padding:12px; min-height:0; }
+.nadi-score-overlay .nadi-score-dialog .nadi-score-direct-tools button { background:var(--brand-solid); color:var(--brand-text); border-color:var(--brand-line); }
+.nadi-score-overlay .nadi-score-dialog .nadi-score-direct-tools button:disabled { color:var(--brand-muted); opacity:.8; }
+
+/* v003: comfortable Sounds-panel gutters and field text insets. */
+.nadi-experience .studio-workspace .v4-sounds { padding:22px 24px 24px; }
+.nadi-experience .studio-workspace .v4-sound-filters { gap:16px; padding:12px 0; }
+.nadi-experience .studio-workspace .v4-sound-filters label { gap:8px; }
+.nadi-experience .studio-workspace .v4-sound-filters :is(input,select) {
+  min-height:42px; padding-block:10px; padding-inline:16px; line-height:1.4;
+  box-sizing:border-box;
+}
+.nadi-experience .studio-workspace .v4-sound-filters select { padding-inline-end:40px; }
+.nadi-experience .studio-workspace [data-work-panel="sounds"] .v4-track-controls { padding:10px 24px; gap:10px; }
+.nadi-experience .studio-workspace [data-work-panel="sounds"] .v4-track-controls select { padding:8px 34px 8px 14px; min-height:38px; }
+@media(max-width:600px) {
+  .nadi-experience .studio-workspace .v4-sounds { padding:18px 16px; }
+  .nadi-experience .studio-workspace [data-work-panel="sounds"] .v4-track-controls { padding:10px 16px; }
+}
+
+.nadi-score-overlay .nadi-score-dialog .nadi-score-direct-tools button:enabled:hover {
+  border-color:var(--brand-accent);
+}
+.nadi-score-overlay .nadi-score-dialog .nadi-score-direct-tools button:enabled:active {
+  background:var(--brand-control-active); color:var(--brand-control-active-text);
+}
+
+/* v011: four explicit account actions; compact feedback, no implicit grid row. */
+.nadi-experience .nadi-account-strip { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:10px 12px; }
+.nadi-account-strip > .nadi-work-link,.nadi-account-strip > .nadi-score-link { flex:1 1 260px; width:auto; min-height:64px; box-sizing:border-box; }
+.nadi-account-strip > .nadi-feedback-button { flex:0 0 auto; align-self:center; min-height:44px; height:44px; padding:10px 16px; color:var(--brand-text); background:linear-gradient(130deg,#ffffff20,#ffffff0b); border:1px solid var(--brand-line); font-size:14px; line-height:1.3; }
+.nadi-account-strip > .nadi-feedback-button:active,.nadi-account-strip > .nadi-feedback-button[aria-expanded="true"] { color:var(--brand-control-active-text); background:var(--brand-control-active); }
+.nadi-account-strip > .nadi-feedback-button:focus-visible { outline:2px solid var(--brand-accent); outline-offset:3px; }
+.nadi-account-strip > .nadi-account-tools { flex:0 0 auto; align-self:center; }
+.nadi-account-strip > .nadi-account-tools > summary { min-height:44px; height:auto; padding:10px 15px; box-sizing:border-box; font-size:14px; line-height:1.3; }
+.nadi-account-strip > .nadi-sync-message { flex-basis:100%; order:5; }
+@media(max-width:700px) {
+.nadi-account-strip > .nadi-work-link,.nadi-account-strip > .nadi-score-link { flex-basis:100%; }
+.nadi-account-strip > .nadi-feedback-button { order:3; }
+.nadi-account-strip > .nadi-account-tools { order:4; margin-left:auto; }
+.nadi-account-strip > .nadi-account-tools > div { left:auto; right:0; }
+}

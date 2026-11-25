@@ -1,0 +1,155 @@
+/* The working studio shares the portal's glass palette. Musical coordinates,
+   note heights, timeline widths and keyboard hit regions stay in their owners. */
+.nadi-experience .creation-shell.studio-workspace {
+  --nadi-bg:var(--glass-bg);
+  --nadi-panel:var(--glass-surface);
+  --nadi-raised:var(--glass-solid);
+  --nadi-line:var(--glass-line);
+  --studio-wash:color-mix(in srgb,var(--glass-accent) 9%,transparent);
+  --studio-selected:color-mix(in srgb,var(--glass-accent) 19%,var(--glass-solid));
+  --studio-grid:color-mix(in srgb,var(--glass-text) 14%,transparent);
+  /* StudioApp's intermediate host has intrinsic height, so a percentage here
+     expands to the editor's full piano-roll content instead of the viewport. */
+  height:calc(100dvh - 48px); color:var(--glass-text); background:transparent;
+  font-family:"Aptos","Segoe UI",system-ui,sans-serif;
+}
+.nadi-experience .studio-workspace :is(h1,h2,h3) {
+  color:var(--glass-text); font-family:inherit; text-shadow:none;
+}
+.nadi-experience .studio-workspace :is(button,summary):not(.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label) {
+  border-color:var(--glass-line); border-radius:9px;
+  color:var(--glass-text); background:var(--glass-surface);
+  font-family:inherit; box-shadow:inset 0 1px 0 color-mix(in srgb,white 13%,transparent);
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.nadi-experience .studio-workspace :is(button,summary):hover:not(:disabled,.roll-note,.roll-placement,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label) {
+  background:var(--studio-selected); border-color:var(--glass-accent);
+}
+.nadi-experience .studio-workspace button:is([aria-pressed=true],[aria-selected=true]):not(.roll-note,.piano-key,.drum-step,.drum-hit,.v4-clip,.v4-lane-label),
+.nadi-experience .studio-workspace .sw-play {
+  background:var(--studio-selected); color:var(--glass-text); border-color:var(--glass-accent);
+  box-shadow:inset 0 1px 0 #ffffff24,0 2px 8px #16395b10;
+}
+.nadi-experience .studio-workspace :is(button,summary,input,select,textarea):focus-visible {
+  outline:2px solid var(--glass-accent); outline-offset:2px;
+}
+.nadi-experience .studio-workspace :is(input:not([type=range]),select,textarea) {
+  background:var(--glass-solid); border-color:var(--glass-line); border-radius:8px;
+  color:var(--glass-text); font-family:inherit;
+}
+.nadi-experience .studio-workspace :is(input,textarea)::placeholder { color:var(--glass-muted); opacity:.85; }
+.nadi-experience .studio-workspace input:is([type=range],[type=checkbox]) { accent-color:var(--glass-accent); }
+.nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) {
+  background:var(--glass-surface); border-color:var(--glass-line);
+}
+.nadi-experience .studio-workspace .sw-transport { padding-inline:14px; }
+.nadi-experience .studio-workspace .sw-selector { padding-inline:14px; }
+.nadi-experience .studio-workspace .sw-brand { color:var(--glass-text); font-weight:850; letter-spacing:.15em; }
+.nadi-experience .studio-workspace .sw-mira-toggle { color:var(--glass-accent); }
+.nadi-experience .studio-workspace .sw-tempo { border-color:var(--glass-line); }
+.nadi-experience .studio-workspace :is(.sw-save-state,.sw-range,.sw-empty,.sw-menu small,.sw-feedback) { color:var(--glass-muted); }
+.nadi-experience .studio-workspace .sw-main { padding:12px; }
+.nadi-experience .studio-workspace .sw-panel {
+  background:var(--glass-surface); border-color:var(--glass-line); border-radius:18px;
+  box-shadow:var(--glass-shadow);
+}
+.nadi-experience .studio-workspace .sw-panel--active { border-color:color-mix(in srgb,var(--glass-accent) 58%,var(--glass-line)); }
+.nadi-experience .studio-workspace .sw-panel-heading {
+  padding-inline:12px; background:var(--studio-wash); border-color:var(--glass-line);
+}
+.nadi-experience .studio-workspace .sw-panel-heading h2 { font-weight:750; letter-spacing:.015em; }
+.nadi-experience .studio-workspace .sw-panel--active>.sw-panel-heading { box-shadow:inset 0 2px color-mix(in srgb,var(--glass-accent) 60%,transparent); }
+.nadi-experience .studio-workspace .sw-divider { border-color:transparent; border-radius:99px; background:var(--glass-line); background-clip:padding-box; }
+.nadi-experience .studio-workspace .sw-divider:is(:hover,:focus-visible) { background:var(--glass-accent); }
+.nadi-experience .studio-workspace :is(.sw-feedback,.sw-identity>.v4-track-controls) { background:var(--glass-surface); border-color:var(--glass-line); }
+.nadi-experience .studio-workspace :is(.sw-menu>div,.v4-add-menu>div,.v4-track-settings>div,.studio-range,.note-more>.note-batch-tools,.note-properties.is-compact>.note-inspector,.composing-editor--compact .roll-help>div) {
+  background:var(--glass-solid); color:var(--glass-text); border-color:var(--glass-line);
+  border-radius:14px; box-shadow:var(--glass-shadow); backdrop-filter:var(--brand-popover-filter);
+}
+.nadi-experience .studio-workspace :is(.v4-track-controls,.v4-editor-context,.v4-playlist-heading,.v4-clip-actions,.v4-pattern-list,.v4-mixer,.v4-mixer-heading,.drum-toolbar,.editor-hint,.roll-beats,.live-piano) {
+  background:var(--studio-wash); border-color:var(--glass-line); color:var(--glass-text);
+}
+.nadi-experience .studio-workspace :is(.v4-record-target,.v4-record-target strong,.v4-pattern-list p,.v4-sounds p,.v4-sounds h3,.v4-sound small,.v4-level-ok,.production-controls summary,.expression-lane p,.studio-session-controls,.selection-count,.note-tools label,.roll-caption,.roll-caption strong,.roll-shortcuts,.roll-help,.advanced-note,.note-more,.note-properties.is-compact,.note-inspector fieldset legend,.drum-microhint) { color:var(--glass-muted); }
+.nadi-experience .studio-workspace :is(.piano-editor,.minimal-notes-panel,.composing-editor,.drum-editor--timeline,.combined-drums,.v4-playlist,.v4-sounds) { background:transparent; color:var(--glass-text); }
+.nadi-experience .studio-workspace :is(.v4-lane,.v4-mixer-channel,.v4-mixer-heading,.combined-drum-track,.v4-pattern-list,.v4-ruler>div>span,.drum-ruler-bar,.drum-ruler-bar b) { border-color:var(--glass-line); }
+.nadi-experience .studio-workspace :is(.v4-ruler,.v4-ruler>span,.drum-row-label,.step-numbers.drum-time-ruler) { background:var(--glass-solid); color:var(--glass-muted); }
+.nadi-experience .studio-workspace .v4-lane-label { background:var(--glass-solid)!important; color:var(--glass-text); }
+.nadi-experience .studio-workspace .v4-lane-label[aria-pressed=true] { background:var(--studio-selected)!important; }
+.nadi-experience .studio-workspace .v4-lane-label small { color:var(--glass-muted); }
+.nadi-experience .studio-workspace .v4-clip-area { background:repeating-linear-gradient(to right,transparent 0,transparent calc(100% / var(--song-bars) - 1px),var(--studio-grid) calc(100% / var(--song-bars) - 1px),var(--studio-grid) calc(100% / var(--song-bars))); }
+.nadi-experience .studio-workspace .v4-clip { color:var(--glass-text); background:color-mix(in srgb,var(--track-color) 24%,var(--glass-solid))!important; border-radius:6px!important; }
+.nadi-experience .studio-workspace .v4-clip[aria-pressed=true] { background:color-mix(in srgb,var(--track-color) 42%,var(--glass-solid))!important; box-shadow:inset 0 0 0 1px var(--glass-accent); }
+.nadi-experience .studio-workspace .v4-clip>small { color:var(--glass-text); }
+.nadi-experience .studio-workspace .v4-clip.v4-clip-invalid { background:#753e35!important; color:#fff; }
+.nadi-experience .studio-workspace .v4-sounds { padding:14px; }
+.nadi-experience .studio-workspace .v4-sounds h2 { font-size:17px; }
+.nadi-experience .studio-workspace .v4-sound { padding:7px 8px; border:1px solid var(--glass-line); border-radius:12px; background:var(--glass-surface); }
+.nadi-experience .studio-workspace .v4-mixer { border:0; }
+.nadi-experience .studio-workspace .v4-mixer-channel { background:var(--glass-surface); }
+.nadi-experience .studio-workspace .expression-canvas { background:var(--studio-wash); border-color:var(--glass-line); border-radius:8px; }
+.nadi-experience .studio-workspace .expression-canvas polyline { stroke:var(--glass-accent); }
+.nadi-experience .studio-workspace .expression-canvas circle { fill:var(--glass-accent); }
+.nadi-experience .studio-workspace .expression-grid { stroke:var(--studio-grid); }
+.nadi-experience .studio-workspace .v4-level-meter::-webkit-meter-bar { background:var(--studio-wash); border-color:var(--glass-line); }
+.nadi-experience .studio-workspace .v4-level-meter::-webkit-meter-optimum-value { background:var(--glass-accent); }
+/* Keep pitch rows, beat cells and note bounds exact: only their paint changes. */
+.nadi-experience .studio-workspace .piano-roll-viewport { border-color:var(--glass-line); scrollbar-color:var(--glass-muted) transparent; }
+.nadi-experience .studio-workspace .roll-row { background:color-mix(in srgb,var(--glass-solid) 65%,transparent); border-color:var(--studio-grid); }
+.nadi-experience .studio-workspace .roll-row--black { background:var(--studio-wash); }
+.nadi-experience .studio-workspace .roll-pitch { color:var(--glass-text); background:var(--glass-solid); border-color:var(--glass-line); }
+.nadi-experience .studio-workspace .roll-row--black .roll-pitch { color:var(--glass-muted); background:var(--studio-selected); }
+.nadi-experience .studio-workspace .composing-editor .roll-placement { background-color:transparent; background-image:linear-gradient(90deg,transparent calc(100% - 1px),var(--studio-grid) calc(100% - 1px)); }
+.nadi-experience .studio-workspace .composing-editor .roll-placement:hover { background-color:var(--studio-wash); }
+.nadi-experience .studio-workspace .composing-editor .roll-beats button { background:transparent; border-color:var(--glass-line); border-radius:0; color:var(--glass-muted); box-shadow:none; }
+.nadi-experience .studio-workspace .composing-editor .roll-note { background:#8fd6eb; color:#12324a; border-color:#368aab; border-radius:4px; }
+.nadi-experience .studio-workspace .composing-editor .roll-note.is-selected { background:#f6cf9b; color:#492a12; border-color:#b17533; }
+.nadi-experience .studio-workspace .roll-note-resize { background:#4c9bb7; border-color:#a6e2ef; }
+.nadi-experience .studio-workspace .drum-lane { border-color:var(--glass-line); background-color:var(--studio-wash); background-image:linear-gradient(to right,var(--glass-muted) 1px,transparent 1px),linear-gradient(to right,var(--studio-grid) 1px,transparent 1px),linear-gradient(to right,var(--studio-grid) 1px,transparent 1px); }
+.nadi-experience .studio-workspace :is(.drum-toolbar strong,.drum-ruler-bar em) { color:var(--glass-text); }
+.nadi-experience .studio-workspace .drum-row-label { box-shadow:1px 0 var(--glass-line); }
+.nadi-experience .studio-workspace .drum-step { background:transparent; border:0; border-radius:0; box-shadow:none; }
+.nadi-experience .studio-workspace .drum-step:hover:not(:disabled) { background:var(--studio-wash); }
+.nadi-experience .studio-workspace .drum-step--outside-part { background:color-mix(in srgb,var(--glass-muted) 15%,transparent); }
+.nadi-experience .studio-workspace .drum-hit { background:var(--hit-color); border-color:color-mix(in srgb,var(--hit-color) 70%,var(--glass-text)); }
+.nadi-experience .studio-workspace .piano-key--white { background:linear-gradient(#ffffff,#e6edf6); color:#263c53; border-color:#99aabe; border-radius:0 0 6px 6px; box-shadow:inset 0 -3px #b7c8d8; }
+.nadi-experience .studio-workspace .piano-key--black { background:linear-gradient(100deg,#192331,#39475b 65%,#17202e); border-color:#101827; border-radius:0 0 5px 5px; box-shadow:inset 0 -3px #0c1220; }
+.nadi-experience .studio-workspace .piano-key.is-active { background:#83d5e9; box-shadow:inset 0 -3px #388ca9; }
+.nadi-experience .studio-workspace .sw-panel--keyboard .live-piano { align-items:stretch; }
+.nadi-experience .studio-workspace .sw-panel--keyboard .live-piano>span { width:auto; color:var(--glass-muted); }
+.nadi-experience .studio-workspace .sw-panel--keyboard .piano-keys { width:100%; }
+.nadi-experience .studio-workspace .sw-panel--keyboard .piano-key--white { height:180px; }
+.nadi-experience .studio-workspace .sw-panel--keyboard .piano-key--black { height:112px; }
+/* Original captures and Mira are private work surfaces, styled like the studio. */
+.nadi-experience .studio-workspace .idea-pad { background:transparent; color:var(--glass-text); padding:16px; }
+.nadi-experience .studio-workspace :is(.idea-pad header,.idea-originals,.idea-pad .idea-limits,.studio-mira header,.studio-mira-answer,.studio-mira-history>div) { border-color:var(--glass-line); }
+.nadi-experience .studio-workspace :is(.idea-pad h2,.idea-pad label,.idea-text,.idea-empty strong,.studio-mira h2,.studio-mira label) { color:var(--glass-text); }
+.nadi-experience .studio-workspace :is(.idea-pad header p,.idea-pad header>span,.idea-pad small,.idea-kind,.idea-empty,.idea-pad .idea-limits,.idea-pad .idea-message,.idea-recording span,.studio-mira p,.studio-mira small,.studio-mira .mira-source) { color:var(--glass-muted); }
+.nadi-experience .studio-workspace :is(.idea-card,.idea-recording,.idea-draft,.studio-mira-action,.studio-mira-connection,.studio-mira-user,.studio-mira-attachment,.studio-mira-song,.studio-mira-example,.studio-mira [aria-live]) {
+  color:var(--glass-text); background:var(--glass-surface); border-color:var(--glass-line); border-radius:12px;
+}
+.nadi-experience .studio-workspace :is(.idea-draft>p,.studio-mira [aria-live] p:first-child) { color:var(--glass-text); }
+.nadi-experience .studio-workspace .idea-pad audio { color-scheme:inherit; }
+.nadi-experience .studio-workspace .idea-list { scrollbar-color:var(--glass-muted) transparent; }
+.nadi-experience .studio-workspace .sw-mira { padding:12px 12px 12px 0; background:transparent; }
+.nadi-experience .studio-workspace .sw-mira>.studio-mira { background:var(--glass-surface); border-color:var(--glass-line); border-radius:18px; box-shadow:var(--glass-shadow); }
+.nadi-experience .studio-workspace .mira-avatar { border-color:var(--glass-line); border-radius:10px; background:var(--studio-wash); }
+.nadi-experience .studio-workspace .studio-mira-action { border-left-color:var(--glass-accent); }
+.nadi-experience .studio-workspace .studio-mira label { margin-block:10px 5px; }
+.nadi-experience .studio-workspace .sw-record.is-recording { color:#fff; background:#963d4b; border-color:#f1a6b0; }
+.nadi-experience[data-theme=light] .studio-workspace :is(.sw-record-status,.numeric-draft small,.v4-position-error,.v4-clipping-warning) { color:#a04437; }
+.nadi-experience[data-theme=light] .studio-workspace .v4-linked-warning { color:#835516; }
+.nadi-experience[data-theme=light] .studio-workspace .drum-editor--timeline .drum-row>strong { color:color-mix(in srgb,var(--hit-color) 55%,#17233e); }
+.nadi-experience[data-theme=eclipse] .studio-workspace .composing-editor .roll-note { background:#b9b1f7; color:#252049; border-color:#e1d5ff; }
+.nadi-experience[data-theme=dark] .studio-workspace .composing-editor .roll-note { background:#a8c7cc; color:#182c34; border-color:#d2ebef; }
+@media(max-width:1000px) {
+  .nadi-experience .studio-workspace .sw-mira { inset:142px 10px 40px auto; padding:0; border-radius:18px; }
+  .nadi-experience .studio-workspace .sw-mira>.studio-mira { background:var(--glass-solid); }
+}
+@media(max-width:780px) {
+  .nadi-experience .studio-workspace .sw-main { padding:6px; }
+  .nadi-experience .studio-workspace :is(.sw-transport,.sw-selector) { padding-inline:6px; }
+  .nadi-experience .studio-workspace .sw-panel { border-radius:12px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .nadi-experience .studio-workspace :is(button,summary) { transition:none; }
+}

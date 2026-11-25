@@ -1,0 +1,73 @@
+.creation-shell .composing-editor { --label-width:52px; gap:4px; min-height:180px; outline:none; overflow:visible; }
+.creation-shell .composing-editor.is-disabled { opacity:.68; }
+.creation-shell .note-tools { display:flex; align-items:center; gap:5px; min-height:30px; flex-wrap:wrap; }
+.creation-shell .note-tools button,.creation-shell .note-tools select { min-height:27px; border:1px solid #46546a; border-radius:4px; color:#d8e2f0; background:#202936; font:10px ui-monospace,Consolas,monospace; }
+.creation-shell .note-tools button { padding:4px 9px; }
+.creation-shell .note-tools button[aria-pressed="true"] { border-color:#8ab9ef; background:#315477; color:#fff; }
+.creation-shell .note-tools label { display:flex; align-items:center; gap:4px; margin-left:5px; color:#aebbd0; font-size:10px; }
+.creation-shell .note-tools select { padding:2px 5px; }
+.creation-shell .selection-count { margin-left:auto; color:#aebbd0; font-size:10px; }
+.creation-shell .note-tools .delete-selection { border-color:#6b4653; color:#e3b0ba; }
+.creation-shell .editor-hint { display:flex; align-items:center; justify-content:space-between; padding:3px 7px; border:1px solid #384658; border-radius:3px; background:#1d2632; color:#9fb0c6; font-size:10px; }
+.creation-shell .editor-hint button { border:0; color:#bac7d7; background:transparent; cursor:pointer; }
+.creation-shell .composing-editor .roll-ruler-viewport { position:sticky; top:0; z-index:10; flex:none; overflow:hidden; min-width:0; }
+.creation-shell .composing-editor .roll-beats { display:grid; overflow:hidden; }
+.creation-shell .composing-editor--timeline .roll-beats { overflow:visible; }
+.creation-shell .composing-editor--timeline .roll-beats > span { position:sticky; left:0; z-index:2; background:var(--brand-solid,#252d39); }
+.creation-shell .composing-editor--timeline .piano-roll-viewport { overflow-x:auto; }
+.creation-shell .composing-editor.composing-editor--timeline .piano-roll-surface { overflow:clip; }
+.creation-shell .composing-editor--timeline .roll-pitch { position:sticky; left:0; z-index:3; box-sizing:border-box; }
+.creation-shell .composing-editor .roll-beats b { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.creation-shell .composing-editor .roll-beats button { border:0; border-left:1px solid #35453e; padding:2px; min-width:0; background:#1c2924; color:#b7cdbb; font:inherit; overflow:hidden; cursor:pointer; }
+.creation-shell .composing-editor .piano-roll-viewport { min-height:180px; }
+.creation-shell .composing-editor .piano-roll-surface { min-width:calc(var(--label-width) + 192px); overflow:hidden; touch-action:none; }
+.creation-shell .composing-editor .roll-placement { touch-action:none; background-image:linear-gradient(90deg,transparent calc(100% - 1px),rgba(110,130,155,.28) calc(100% - 1px)); }
+.creation-shell .composing-editor .roll-notes { overflow:visible; }
+.creation-shell .composing-editor .roll-note { overflow:visible; touch-action:none; cursor:grab; }
+.creation-shell .composing-editor .roll-note:active { cursor:grabbing; }
+.creation-shell .composing-editor .roll-note[data-continues-before="true"] { border-left-style:dashed; }
+.creation-shell .composing-editor .roll-note[data-continues-after="true"] { border-right-style:dashed; }
+.creation-shell .roll-note-resize { position:absolute; top:0; bottom:0; right:0; width:min(5px,40%); border:1px solid #d0df9d; border-radius:0 2px 2px 0; background:#668e65; cursor:ew-resize; }
+.creation-shell .numeric-draft { display:inline-flex; flex-direction:column; gap:3px; }
+.creation-shell .numeric-draft small { color:#ffbeab; font-size:10px; max-width:150px; }
+.creation-shell .numeric-draft input[aria-invalid="true"] { border-color:#ec997c; }
+.creation-shell .selection-box { position:absolute; z-index:5; transform:translateX(var(--label-width)); border:1px solid #79b7ef; background:rgba(89,156,218,.2); pointer-events:none; }
+.creation-shell .roll-playhead { position:absolute; z-index:6; top:0; bottom:0; width:1px; background:#f0c36f; pointer-events:none; }
+.creation-shell .roll-playhead.is-playing { box-shadow:0 0 5px #f0c36f; }
+.creation-shell .composing-editor .note-inspector { align-items:flex-end; flex-wrap:wrap; }
+.creation-shell .composing-editor .note-inspector fieldset { display:flex; gap:4px; margin:0; padding:0; border:0; }
+.creation-shell .composing-editor .note-inspector fieldset legend { color:#9aaac1; font-size:9px; }
+.creation-shell .composing-editor .note-inspector fieldset input { width:54px; }
+.creation-shell .advanced-note { width:100%; padding-top:2px; color:#9eacc0; font-size:10px; }
+.creation-shell .advanced-note[open] { display:flex; align-items:flex-end; gap:6px; }
+.creation-shell .advanced-note summary,.creation-shell .roll-help summary { cursor:pointer; }
+.creation-shell .roll-help { color:#92a3b9; font-size:10px; }
+.creation-shell .roll-help summary { width:max-content; color:#b3c0d0; }
+.creation-shell .roll-help > div { padding:4px 0; line-height:1.5; }
+@media (max-width:700px) { .creation-shell .selection-count { margin-left:0; } }
+.creation-shell .note-properties:not(.is-compact) > summary { display:none; }
+.creation-shell .individual-note { min-width:0; }
+.creation-shell .individual-note-fields { display:flex; align-items:end; gap:6px; flex-wrap:wrap; }
+.creation-shell .composing-editor:not(.composing-editor--compact) .individual-note > summary { display:none; }
+.creation-shell .composing-editor--compact { display:flex; flex-direction:column; flex:1; min-height:0; position:relative; }
+.creation-shell .composing-editor--compact .piano-roll-viewport { height:auto; flex:1 1 360px; min-height:360px; max-height:none; overflow:auto; }
+.creation-shell .composing-editor--compact > .note-tools { flex-shrink:0; flex-wrap:nowrap; }
+.creation-shell .composing-editor--compact .note-tools button,.creation-shell .composing-editor--compact .note-tools select { font-size:12px; min-height:29px; padding:4px 7px; }
+.creation-shell .composing-editor--compact .note-tools label { font-size:11px; margin-left:0; }
+.creation-shell .composing-editor--compact .selection-count { margin-left:0; margin-right:auto; font-size:11px; }
+.creation-shell .composing-editor--compact .editor-hint { font-size:11px; }
+.creation-shell .composing-editor--compact .roll-beats { flex-shrink:0; font-size:10px; min-height:22px; }
+.creation-shell .note-more { position:relative; margin-left:auto; color:#bed0c5; font-size:12px; }
+.creation-shell .note-more > summary,.creation-shell .note-properties > summary { cursor:pointer; padding:5px 7px; }
+.creation-shell .note-more > .note-batch-tools { position:absolute; z-index:20; right:0; top:100%; width:240px; padding:8px; border:1px solid #52675b; border-radius:5px; box-shadow:0 8px 24px #0009; background:#202a25; flex-wrap:wrap; }
+.creation-shell .note-properties.is-compact { position:relative; color:#c1cfc6; font-size:12px; }
+.creation-shell .note-properties.is-compact > .note-inspector { position:absolute; bottom:100%; left:0; right:0; z-index:15; max-height:300px; overflow:auto; padding:10px; background:#202a25; border:1px solid #52675b; box-shadow:0 -5px 18px #0006; }
+.creation-shell .note-properties.is-compact .group-relative { flex-wrap:wrap; width:100%; }
+.creation-shell .note-properties.is-compact .individual-note { width:100%; }
+.creation-shell .note-properties.is-compact .individual-note > summary { cursor:pointer; padding:4px 0; }
+.creation-shell .composing-editor--compact .roll-help { position:relative; }
+.creation-shell .composing-editor--compact .roll-help > div { position:absolute; left:0; right:0; bottom:100%; z-index:20; max-height:200px; overflow:auto; padding:12px; background:#202a25; border:1px solid #52675b; font-size:12px; }
+.creation-shell .compact-editor-footer { display:flex; align-items:center; gap:8px; flex:none; position:relative; min-height:26px; }
+.creation-shell .compact-editor-footer .note-properties.is-compact { flex:1; position:static; }
+.creation-shell .compact-editor-footer .roll-help { position:static; }
+.creation-shell .compact-editor-footer .roll-help > div { left:0; right:0; }

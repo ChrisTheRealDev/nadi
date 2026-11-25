@@ -1,0 +1,33 @@
+.nadi-composition-viewer { min-width:0; color:var(--brand-text); font-family:var(--brand-font); }
+.nadi-composition-viewer button,.nadi-composition-viewer select { display:inline-flex; align-items:center; justify-content:center; box-sizing:border-box; min-height:38px; padding:7px 12px; border:1px solid var(--brand-line); border-radius:14px; background:linear-gradient(130deg,#ffffff28,#ffffff10); color:var(--brand-text); font:600 14px/1.2 var(--brand-font); cursor:pointer; }
+.nadi-composition-viewer button:hover { background:color-mix(in srgb,var(--brand-raised) 85%,transparent); }
+.nadi-composition-viewer button:active,.nadi-composition-viewer button[aria-pressed=true] { background:#211681; color:#f5f1ff; }
+.nadi-composition-viewer :is(button,select):focus-visible,.nadi-composition-viewer .nadi-viewer-scroll:focus-visible { outline:2px solid var(--brand-accent); outline-offset:2px; }
+.nadi-composition-viewer button:disabled { opacity:.45; cursor:default; }
+.nadi-composition-viewer select { background:var(--brand-solid); max-width:min(300px,70vw); }
+.nadi-viewer-toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:6px 0 10px; }
+.nadi-viewer-toolbar label { display:flex; gap:8px; align-items:center; font-size:13px; }
+.nadi-viewer-zoom { display:flex; align-items:center; gap:6px; }
+.nadi-viewer-zoom output { min-width:44px; text-align:center; font-size:13px; font-variant-numeric:tabular-nums; }
+.nadi-viewer-note-count { font-size:13px; color:var(--brand-muted); }
+.nadi-composition-viewer .nadi-viewer-scroll { max-height:480px; min-height:180px; overscroll-behavior:contain; position:relative; }
+.nadi-viewer-grid { min-width:100%; }
+.nadi-viewer-ruler { height:32px; display:flex; position:sticky; top:0; z-index:3; background:var(--brand-solid); border-bottom:1px solid var(--brand-line); }
+.nadi-viewer-corner { flex-shrink:0; position:sticky; left:0; z-index:4; display:flex; align-items:center; padding-left:10px; background:var(--brand-solid); border-right:1px solid var(--brand-line); font-size:13px; }
+.nadi-viewer-grid-body { display:flex; align-items:flex-start; }
+.nadi-viewer-pitches { flex-shrink:0; position:sticky; left:0; z-index:2; background:var(--brand-solid); border-right:1px solid var(--brand-line); }
+.nadi-viewer-pitches > div { display:flex; align-items:center; padding-left:10px; font-size:13px; background:var(--brand-raised); border-bottom:1px solid var(--brand-line); box-sizing:border-box; }
+.nadi-viewer-pitches > div.black { background:var(--brand-solid); }
+.nadi-composition-viewer .nadi-viewer-grid svg { flex-shrink:0; }
+.nadi-composition-viewer .nadi-viewer-ruler text { font:600 13px var(--brand-font); }
+.nadi-composition-viewer .nadi-viewer-beat { stroke-dasharray:2 5; opacity:.55; }
+.nadi-viewer-inspection { display:flex; align-items:center; gap:12px; flex-wrap:wrap; min-height:38px; padding-top:8px; font-size:14px; color:var(--brand-muted); }
+.nadi-composition-viewer-host { position:fixed; inset:0; z-index:10050; width:100%; height:100%; background:var(--brand-bg); }
+.nadi-composition-viewer-host:fullscreen { width:100vw; height:100vh; }
+.nadi-composition-viewer.is-expanded { width:100%; height:100%; margin:0; padding:16px 20px; display:flex; flex-direction:column; overflow:hidden; box-sizing:border-box; background:var(--brand-bg); }
+.nadi-composition-viewer.is-expanded .tp-preview-heading { margin-bottom:4px; }
+.nadi-composition-viewer.is-expanded .tp-preview-heading p { font-size:14px; color:var(--brand-muted); }
+.nadi-composition-viewer.is-expanded .nadi-viewer-scroll { flex:1; min-height:0; max-height:none; border-radius:20px; }
+.nadi-composition-viewer.is-expanded .nadi-viewer-inspection { flex-shrink:0; }
+@media(max-width:650px) { .nadi-composition-viewer.is-expanded { padding:10px; } .nadi-viewer-toolbar { gap:7px; } .nadi-viewer-zoom { flex-wrap:wrap; } .nadi-viewer-note-count { display:none; } .nadi-composition-viewer button { padding:7px 10px; } .nadi-composition-viewer.is-expanded .tp-preview-heading h3 { font-size:18px; } }
+@media(prefers-reduced-transparency:reduce) { .nadi-composition-viewer button { background:var(--brand-solid); } }

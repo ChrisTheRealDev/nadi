@@ -1,0 +1,30 @@
+/* User-selected layout is presentation only; never duplicate live panels. */
+.creation-shell .workspace-arranged { grid-template-areas:var(--workspace-areas); grid-template-rows:var(--workspace-rows); grid-template-columns:var(--workspace-columns); }
+.creation-shell .arrangement[hidden], .creation-shell .compact-mixer[hidden] { display:none; }
+.creation-shell .workspace-arranged > .compact-mixer { grid-area:mixer; border:1px solid var(--nadi-line); border-radius:5px; background:var(--nadi-panel); }
+.creation-shell .customize-workspace { color:#b8dfcd; border-color:#496050; }
+.creation-shell .editor > .live-piano { padding:7px 9px; }
+.creation-shell .compose-navigation { display:flex; align-items:center; flex-wrap:wrap; gap:6px; padding:6px 9px; border-bottom:1px solid var(--nadi-line); font-size:12px; flex:none; }
+.creation-shell .compose-navigation button { min-height:27px; padding:3px 9px; }
+.creation-shell .compose-navigation button { border:1px solid #465d51; border-radius:4px; color:#c9ddd2; background:#23372c; cursor:pointer; }
+.creation-shell .compose-navigation button:disabled { opacity:.45; cursor:default; }
+.creation-shell .editor { min-height:310px; }
+.creation-shell .piano-editor { overflow:auto; }
+.creation-shell .piano-editor > .composing-editor { min-height:340px; }
+.creation-shell .compose-zoom { display:flex; align-items:center; gap:4px; }
+.creation-shell .compose-zoom button[aria-pressed="true"] { background:#355547; border-color:#8db99e; }
+.creation-shell .compose-navigation strong { font-weight:500; }
+.creation-shell .compose-loop-range { color:#d4c27f; border-bottom:2px solid #d4c27f; }
+.creation-shell .compose-preview { margin-left:auto; display:flex; gap:5px; align-items:center; }
+.creation-shell .drum-tab-panel { min-height:0; flex:1; display:flex; flex-direction:column; overflow:auto; }
+.creation-shell .compact-bar-choice { display:flex; align-items:center; gap:6px; margin-left:auto; padding-right:8px; font-size:11px; }
+.creation-shell .compact-bar-choice select { color:var(--nadi-text); background:#18221c; border:1px solid var(--nadi-line); padding:4px; max-width:110px; }
+@media (min-width:951px) {
+  .creation-shell[data-mira-side=left]:not(.creation-shell--free) { grid-template-columns:288px minmax(0,1fr); grid-template-areas:'head head' 'tools tools' 'mira work' 'foot foot'; }
+  .creation-shell[data-mira-side=left] .creation-mira { border-left:0; border-right:1px solid var(--nadi-line); }
+}
+@media (max-width:950px) {
+  .creation-shell .transport { flex-wrap:wrap; flex-shrink:1; max-width:100%; }
+  .creation-shell .workspace-arranged, .creation-shell .workspace-arranged.creation-workspace--ideas, .creation-shell .workspace-arranged:not(.creation-workspace--ideas) { grid-template-columns:minmax(0,1fr); grid-template-areas:var(--workspace-mobile-areas); grid-template-rows:var(--workspace-mobile-rows); }
+  .creation-shell .customize-workspace { white-space:normal; max-width:120px; text-align:center; }
+}
